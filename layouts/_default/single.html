@@ -61,13 +61,34 @@
   {{- partial "comments.html" . }}
   {{- end }}
 </article>
-{{/* ===== FORCE GISCUS COMMENTS ===== */}}
-{{ if eq .Type "posts" }}
-<script src="https://giscus.app/client.js" data-repo="paipaiio/paipaiio.github.io" data-repo-id="R_kgDORI5CQg"
-  data-category="Comments" data-category-id="DIC_kwDORI5CQs4C15eQ" data-mapping="pathname" data-strict="0"
-  data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="preferred_color_scheme"
-  data-lang="zh-CN" crossorigin="anonymous" async>
+{{/* ===== GISCUS COMMENTS (CONFIG-DRIVEN) ===== */}}
+{{ if and (eq .Type "posts") (ne (default false .Params.disableComments) true) }}
+
+<script src="https://giscus.app/client.js" data-repo="{{ site.Params.giscus.repo }}"
+  data-repo-id="{{ site.Params.giscus.repoId }}" data-category="{{ site.Params.giscus.category }}"
+  data-category-id="{{ site.Params.giscus.categoryId }}" data-mapping="{{ site.Params.giscus.mapping }}"
+  data-strict="{{ site.Params.giscus.strict }}" data-reactions-enabled="{{ site.Params.giscus.reactionsEnabled }}"
+  data-emit-metadata="{{ site.Params.giscus.emitMetadata }}"
+  data-input-position="{{ site.Params.giscus.inputPosition }}" data-theme="{{ site.Params.giscus.theme }}"
+  data-lang="{{ site.Params.giscus.lang }}" crossorigin="anonymous" async>
   </script>
+
+<script>
+  const setGiscusTheme = () => {
+    const theme = document.documentElement.classList.contains('dark')
+      ? 'transparent_dark'
+      : 'light';
+    const iframe = document.querySelector('iframe.giscus-frame');
+    if (iframe) {
+      iframe.contentWindow.postMessage(
+        { giscus: { setConfig: { theme } } },
+        'https://giscus.app'
+      );
+    }
+  };
+  window.addEventListener('message', setGiscusTheme);
+</script>
+
 {{ end }}
 
 {{- end }}{{/* end main */}}
