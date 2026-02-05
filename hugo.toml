@@ -1,7 +1,7 @@
-baseURL = 'https://paipaiio.github.io/'
+baseURL = 'https://blog.paipaiio.com'
 languageCode = 'en-us'
 enableRobotsTXT = true
-title = 'My New Hugo Site'
+title = 'paipai’s blog'
 theme = "PaperMod"
 
 # 构建设置
