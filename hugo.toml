@@ -192,6 +192,7 @@ weight = 7
   [markup.goldmark.extensions]
   math = true
   mermaid = true
+  table = true
 
 [taxonomies]
 tag = "tags"
