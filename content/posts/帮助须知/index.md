@@ -17,7 +17,12 @@ cover:
 
 ### 1.软件下载
 
-​	打开软件官网并且根据自己的设备型号选择软件下载，https://rustdesk.com/
+​	打开软件官网并且根据自己的设备型号选择软件下载，https://rustdesk.com/。此处提供Mac+Win部分架构的下载链接。
+
+|                | Google Drive                                                 | OneDrive                                                     | iCloud                                                       |
+| :------------: | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| macOS（M芯片） | [rustdesk-1.4.5-aarch64.dmg](https://drive.google.com/file/d/1pM-NkvWhXnohm1KMtX-OWlQiQzCAclfF/view?usp=share_link) | [rustdesk-1.4.5-aarch64.dmg](https://1drv.ms/u/c/4758749a7a6744bd/IQC3ZsrKa3DtRZRXYiHs68koAb8GgiYRuNm9Rrah9SvLMj8?e=syEbjG) | [rustdesk-1.4.5-aarch64.dmg](https://www.icloud.com.cn/iclouddrive/03eYZckC2o2jboZCWaY1cXvwg#rustdesk-1.4) |
+| Windows（x86） | [rustdesk-1.4.5-x86_64.exe](https://drive.google.com/file/d/1YjtIWWIV_Va5xR-0wv9OusOqsI2fqT3c/view?usp=share_link) | [rustdesk-1.4.5-x86_64.exe](https://1drv.ms/u/c/4758749a7a6744bd/IQBUqUIabsztRosKwW-CvWeuAX4BGNfQcY01YOn418T8-qo?e=cZlhKz) | [rustdesk-1.4.5-x86_64.exe](https://www.icloud.com.cn/iclouddrive/076biGdTe6Gl9sxEr2i9tIo5A#rustdesk-1.4) |
 
 
 
