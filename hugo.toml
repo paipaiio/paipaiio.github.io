@@ -15,14 +15,10 @@ buildExpired = false
 # 输出格式（RSS / SEO）
 ########################
 [outputs]
-home = ["HTML", "RSS"]
-section = ["HTML", "RSS"]
+home = ["HTML", "RSS", "JSON"]
+section = ["HTML"]
 taxonomy = ["HTML"]
 term = ["HTML"]
-
-[outputs.page]
-page = ["HTML"]
-search = ["JSON"]
 
 ########################
 # PaperMod 参数
