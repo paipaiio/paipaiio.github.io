@@ -109,16 +109,16 @@ weight = 3
   [markup.goldmark.renderer]
   unsafe = true
 
+[params]
+comments = true
 
-[params.comments]
-enabled = true
-
-[params.comments.giscus]
+[params.giscus]
 repo = "paipaiio/paipaiio.github.io"
 repoId = "R_kgDORI5CQg"
 category = "Comments"
 categoryId = "DIC_kwDORI5CQs4C15eQ"
 mapping = "pathname"
+strict = "0"
 reactionsEnabled = "1"
 emitMetadata = "0"
 inputPosition = "bottom"
