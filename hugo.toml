@@ -15,7 +15,7 @@ buildExpired = false
 # 输出格式（RSS / SEO）
 ########################
 [outputs]
-home = ["HTML", "RSS", "JSON"]
+home = ["HTML", "RSS"]
 
 ########################
 # PaperMod 参数
