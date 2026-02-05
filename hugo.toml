@@ -15,13 +15,21 @@ buildExpired = false
 # 输出格式（RSS / SEO）
 ########################
 [outputs]
-home = ["HTML", "RSS", "json"]
+home = ["HTML", "RSS"]
+section = ["HTML", "RSS"]
+taxonomy = ["HTML"]
+term = ["HTML"]
+
+[outputs.page]
+search = ["JSON"]
 
 ########################
 # PaperMod 参数
 ########################
 [params]
 comments = true
+
+enableSearch = true
 
 # 内容主入口（非常重要）
 mainSections = ["posts"]
@@ -108,6 +116,11 @@ weight = 2
 name = "关于"
 url = "/about/"
 weight = 3
+
+[[menu.main]]
+name = "🔍"
+url = "/search/"
+weight = 4
 
 
 
