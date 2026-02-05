@@ -1,9 +1,9 @@
-+++
-date = '2026-02-05T08:32:26+08:00'
-draft = false
-title = 'Hello'
-comments = true
-+++
+---
+title: "Hello"
+date: 2026-02-05
+draft: false
+comments: true
+---
 
 # 欢迎来到我的博客
 
