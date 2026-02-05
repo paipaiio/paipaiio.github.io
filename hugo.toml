@@ -43,6 +43,8 @@ customCSS = ["css/custom.css"]
 # 内容主入口（非常重要）
 mainSections = ["posts"]
 
+hideFooter = true
+
 [params.cover]
 hidden = false
 linkFullImages = false

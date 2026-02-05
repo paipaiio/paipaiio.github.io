@@ -128,3 +128,7 @@ blockquote:contains("[!WARNING]") {
 blockquote:contains("[!TIP]") {
     border-left-color: #10b981;
 }
+
+.footer>span {
+    display: none;
+}
