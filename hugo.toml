@@ -16,6 +16,7 @@ buildExpired = false
 ########################
 [outputs]
 home = ["HTML", "RSS"]
+page = ["HTML"]
 section = ["HTML", "RSS"]
 taxonomy = ["HTML"]
 term = ["HTML"]
