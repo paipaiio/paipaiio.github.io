@@ -1,0 +1,130 @@
+/* ==============================
+   📖 文章阅读体验优化
+============================== */
+
+.post-content {
+    max-width: 720px;
+    margin: auto;
+    line-height: 1.8;
+    font-size: 1.05rem;
+}
+
+.post-content h1,
+.post-content h2,
+.post-content h3 {
+    margin-top: 2.2em;
+    margin-bottom: 0.8em;
+    line-height: 1.4;
+}
+
+.post-content p {
+    margin: 1em 0;
+}
+
+.post-content ul,
+.post-content ol {
+    margin: 1em 0 1em 1.5em;
+}
+
+.post-content blockquote {
+    border-left: 4px solid var(--primary);
+    padding-left: 1em;
+    color: var(--secondary);
+    margin: 1.5em 0;
+}
+
+.post-content pre {
+    overflow-x: auto;
+    padding: 1em;
+    border-radius: 8px;
+}
+
+.post-content code {
+    padding: 0.15em 0.3em;
+    border-radius: 4px;
+}
+
+.post-content img {
+    display: block;
+    margin: 1.5em auto;
+    max-width: 100%;
+}
+
+@media (max-width: 768px) {
+    .post-content {
+        font-size: 1rem;
+        padding: 0 0.5em;
+    }
+}
+
+
+/* ==============================
+   📰 列表页：侧边小封面（稳健版）
+============================== */
+
+/* 只影响有封面的文章 */
+.post-entry:has(.entry-cover) {
+    display: flex;
+    gap: 1.2rem;
+    align-items: flex-start;
+    margin-bottom: 1.5em;
+}
+
+/* 封面容器 */
+.post-entry .entry-cover {
+    flex: 0 0 160px;
+    max-width: 160px;
+    margin-bottom: 0;
+}
+
+/* 封面图片 */
+.post-entry .entry-cover img {
+    width: 160px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* 右侧正文 */
+.post-entry .entry-content {
+    flex: 1;
+}
+
+/* 移动端：恢复上下布局 */
+@media (max-width: 768px) {
+    .post-entry:has(.entry-cover) {
+        flex-direction: column;
+    }
+
+    .post-entry .entry-cover,
+    .post-entry .entry-cover img {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+/* ===== Callout / 提示块 ===== */
+
+blockquote {
+    border-left: 4px solid var(--primary);
+    padding: 0.8em 1em;
+    background: rgba(125, 125, 125, 0.08);
+    border-radius: 6px;
+}
+
+blockquote:has(strong) {
+    font-style: normal;
+}
+
+blockquote:contains("[!NOTE]") {
+    border-left-color: #3b82f6;
+}
+
+blockquote:contains("[!WARNING]") {
+    border-left-color: #f59e0b;
+}
+
+blockquote:contains("[!TIP]") {
+    border-left-color: #10b981;
+}

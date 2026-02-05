@@ -3,6 +3,7 @@ title: "Hello"
 date: 2026-02-05
 draft: false
 type: "posts"
+featured: true
 comments: true
 ---
 

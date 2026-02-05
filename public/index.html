@@ -8,7 +8,7 @@
 <meta name="robots" content="index, follow">
 <title>My New Hugo Site</title>
 
-<meta name="description" content="一个长期维护的个人博客，记录技术与思考">
+<meta name="description" content="MuskZhou 的个人博客，记录技术、折腾与思考">
 <meta name="author" content="">
 <link rel="canonical" href="http://localhost:1313/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
@@ -75,13 +75,13 @@
 
 </script><meta property="og:url" content="http://localhost:1313/">
   <meta property="og:site_name" content="My New Hugo Site">
-  <meta property="og:title" content="首页">
-  <meta property="og:description" content="一个长期维护的个人博客，记录技术与思考">
+  <meta property="og:title" content="My New Hugo Site">
+  <meta property="og:description" content="这里你能看到什么 🛠 技术与折腾记录（Hugo / 自建服务 / 工程实践） 🧠 思考与笔记（结构化、长期可复用） 📐 数学 / 工具 / 方法论 如果你是第一次来，推荐从 👉 Hello 开始。">
   <meta property="og:locale" content="en-us">
   <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="首页">
-<meta name="twitter:description" content="一个长期维护的个人博客，记录技术与思考">
+<meta name="twitter:title" content="">
+<meta name="twitter:description" content="MuskZhou 的个人博客，记录技术、折腾与思考">
 
 <script type="application/ld+json">
 {
@@ -89,10 +89,10 @@
   "@type": "Organization",
   "name": "My New Hugo Site",
   "url": "http://localhost:1313/",
-  "description": "一个长期维护的个人博客，记录技术与思考",
+  "description": "MuskZhou 的个人博客，记录技术、折腾与思考",
   "logo": "http://localhost:1313/favicon.ico",
   "sameAs": [
-      "https://github.com/paipaiio", "MuskZhouMQ@outlook.com"
+      "https://github.com/paipaiio", "mailto:MuskZhouMQ@outlook.com"
   ]
 }
 </script>
@@ -141,6 +141,26 @@
                     <span>关于</span>
                 </a>
             </li>
+            <li>
+                <a href="http://localhost:1313/archives/" title="归档">
+                    <span>归档</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tags/" title="标签">
+                    <span>标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/" title="分类">
+                    <span>分类</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/search/" title="🔍">
+                    <span>🔍</span>
+                </a>
+            </li>
         </ul>
     </nav>
 </header>
@@ -159,7 +179,7 @@
     </path>
 </svg>
     </a>
-    <a href="MuskZhouMQ@outlook.com" target="_blank" rel="noopener noreferrer me"
+    <a href="mailto:MuskZhouMQ@outlook.com" target="_blank" rel="noopener noreferrer me"
         title="Email">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 21" fill="none" stroke="currentColor" stroke-width="2"
     stroke-linecap="round" stroke-linejoin="round">
@@ -170,14 +190,19 @@
 </div>
 
         <div class="buttons">
-            <a class="button" href="/posts/" rel="noopener" title="文章">
+            <a class="button" href="/posts/" rel="noopener" title="📚 开始阅读">
                 <span class="button-inner">
-                    文章
+                    📚 开始阅读
                 </span>
             </a>
-            <a class="button" href="/about/" rel="noopener" title="关于">
+            <a class="button" href="/about/" rel="noopener" title="👋 关于我">
                 <span class="button-inner">
-                    关于
+                    👋 关于我
+                </span>
+            </a>
+            <a class="button" href="/now/" rel="noopener" title="👀 近期活动">
+                <span class="button-inner">
+                    👀 近期活动
                 </span>
             </a>
         </div>
@@ -185,82 +210,10 @@
 </div>
 
     </main>
-    
-<footer class="footer">
-        <span>&copy; 2026 <a href="http://localhost:1313/">My New Hugo Site</a></span> · 
-
+    <footer class="footer">
     <span>
-        Powered by
-        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
-        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+        Copyright © 2026 paipaiNetWork &amp; Made by MuskZhou
     </span>
-</footer>
-<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
-        <path d="M12 6H0l6-6z" />
-    </svg>
-</a>
-
-<script>
-    let menu = document.getElementById('menu');
-    if (menu) {
-        
-        const scrollPosition = localStorage.getItem("menu-scroll-position");
-        if (scrollPosition) {
-            menu.scrollLeft = parseInt(scrollPosition, 10);
-        }
-        
-        menu.onscroll = function () {
-            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
-        }
-    }
-
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener("click", function (e) {
-            e.preventDefault();
-            var id = this.getAttribute("href").substr(1);
-            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
-                    behavior: "smooth"
-                });
-            } else {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
-            }
-            if (id === "top") {
-                history.replaceState(null, null, " ");
-            } else {
-                history.pushState(null, null, `#${id}`);
-            }
-        });
-    });
-
-</script>
-<script>
-    var mybutton = document.getElementById("top-link");
-    window.onscroll = function () {
-        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
-            mybutton.style.visibility = "visible";
-            mybutton.style.opacity = "1";
-        } else {
-            mybutton.style.visibility = "hidden";
-            mybutton.style.opacity = "0";
-        }
-    };
-
-</script>
-<script>
-    document.getElementById("theme-toggle").addEventListener("click", () => {
-        const html = document.querySelector("html");
-        if (html.dataset.theme === "dark") {
-            html.dataset.theme = 'light';
-            localStorage.setItem("pref-theme", 'light');
-        } else {
-            html.dataset.theme = 'dark';
-            localStorage.setItem("pref-theme", 'dark');
-        }
-    })
-
-</script>
-</body>
+</footer></body>
 
 </html>

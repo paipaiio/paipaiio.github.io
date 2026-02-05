@@ -1,5 +1,6 @@
 baseURL = 'https://paipaiio.github.io/'
 languageCode = 'en-us'
+enableRobotsTXT = true
 title = 'My New Hugo Site'
 theme = "PaperMod"
 
@@ -26,10 +27,28 @@ term = ["HTML"]
 [params]
 comments = true
 
+enableGitInfo = true
+
+ShowLastMod = true
+
+env = "production"
+description = "MuskZhou 的个人博客，记录技术、折腾与思考"
+
 enableSearch = true
+
+ShowToc = true
+
+customCSS = ["css/custom.css"]
 
 # 内容主入口（非常重要）
 mainSections = ["posts"]
+
+[params.cover]
+hidden = false
+linkFullImages = false
+hiddenInList = true
+showCover = true
+hideCoverInSingle = false   # 单篇文章页仍然可以大图
 
 # 主题模式
 defaultTheme = "auto"        # auto / light / dark
@@ -51,6 +70,21 @@ TocOpen = false
 env = "production"
 description = "一个长期维护的个人博客，记录技术与思考"
 
+[params.fuseOpts]
+isCaseSensitive = false
+shouldSort = true
+location = 0
+distance = 100
+threshold = 0.3
+minMatchCharLength = 2
+keys = [
+  "title",
+  "summary",
+  "content",
+  "tags",
+  "categories"
+]
+
 ########################
 # 首页：ProfileMode
 ########################
@@ -65,12 +99,16 @@ imageHeight = 120
 
 # ProfileMode 按钮（可选）
 [[params.profileMode.buttons]]
-name = "文章"
+name = "📚 开始阅读"
 url = "/posts/"
 
 [[params.profileMode.buttons]]
-name = "关于"
+name = "👋 关于我"
 url = "/about/"
+
+[[params.profileMode.buttons]]
+name = "👀 近期活动"
+url = "/now/"
 
 ########################
 # 社交链接（右下角 / about 用）
@@ -115,10 +153,24 @@ url = "/about/"
 weight = 3
 
 [[menu.main]]
-name = "🔍"
-url = "/search/"
+name = "归档"
+url = "/archives/"
 weight = 4
 
+[[menu.main]]
+name = "标签"
+url = "/tags/"
+weight = 5
+
+[[menu.main]]
+name = "分类"
+url = "/categories/"
+weight = 6
+
+[[menu.main]]
+name = "🔍"
+url = "/search/"
+weight = 7
 
 
 ########################
@@ -130,9 +182,16 @@ weight = 4
   noClasses = false
   codeFences = true
   guessSyntax = true
-  lineNos = true
+  lineNos = false
 
   [markup.goldmark.renderer]
   unsafe = true
 
+  [markup.goldmark.extensions]
+  math = true
+  mermaid = true
+
+[taxonomies]
+tag = "tags"
+category = "categories"
 

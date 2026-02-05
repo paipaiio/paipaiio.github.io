@@ -7,7 +7,7 @@
 <meta name="robots" content="index, follow">
 <title>Tags | My New Hugo Site</title>
 <meta name="keywords" content="">
-<meta name="description" content="一个长期维护的个人博客，记录技术与思考">
+<meta name="description" content="MuskZhou 的个人博客，记录技术、折腾与思考">
 <meta name="author" content="">
 <link rel="canonical" href="http://localhost:1313/tags/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
@@ -18,7 +18,6 @@
 <link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/tags/index.xml" title="rss">
 <link rel="alternate" hreflang="en" href="http://localhost:1313/tags/">
 <noscript>
     <style>
@@ -74,12 +73,12 @@
 </script><meta property="og:url" content="http://localhost:1313/tags/">
   <meta property="og:site_name" content="My New Hugo Site">
   <meta property="og:title" content="Tags">
-  <meta property="og:description" content="一个长期维护的个人博客，记录技术与思考">
+  <meta property="og:description" content="MuskZhou 的个人博客，记录技术、折腾与思考">
   <meta property="og:locale" content="en-us">
   <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Tags">
-<meta name="twitter:description" content="一个长期维护的个人博客，记录技术与思考">
+<meta name="twitter:description" content="MuskZhou 的个人博客，记录技术、折腾与思考">
 
 </head>
 <body class="list" id="top">
@@ -126,6 +125,26 @@
                     <span>关于</span>
                 </a>
             </li>
+            <li>
+                <a href="http://localhost:1313/archives/" title="归档">
+                    <span>归档</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tags/" title="标签">
+                    <span class="active">标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/" title="分类">
+                    <span>分类</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/search/" title="🔍">
+                    <span>🔍</span>
+                </a>
+            </li>
         </ul>
     </nav>
 </header>
@@ -135,84 +154,18 @@
 </header>
 
 <ul class="terms-tags">
+    <li>
+        <a href="http://localhost:1313/tags/serv00/">Serv00 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="http://localhost:1313/tags/%E5%8D%9A%E5%AE%A2/">博客 <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
 </ul>
     </main>
-    
-<footer class="footer">
-        <span>&copy; 2026 <a href="http://localhost:1313/">My New Hugo Site</a></span> · 
-
+    <footer class="footer">
     <span>
-        Powered by
-        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
-        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+        Copyright © 2026 paipaiNetWork &amp; Made by MuskZhou
     </span>
-</footer>
-<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
-        <path d="M12 6H0l6-6z" />
-    </svg>
-</a>
-
-<script>
-    let menu = document.getElementById('menu');
-    if (menu) {
-        
-        const scrollPosition = localStorage.getItem("menu-scroll-position");
-        if (scrollPosition) {
-            menu.scrollLeft = parseInt(scrollPosition, 10);
-        }
-        
-        menu.onscroll = function () {
-            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
-        }
-    }
-
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener("click", function (e) {
-            e.preventDefault();
-            var id = this.getAttribute("href").substr(1);
-            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
-                    behavior: "smooth"
-                });
-            } else {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
-            }
-            if (id === "top") {
-                history.replaceState(null, null, " ");
-            } else {
-                history.pushState(null, null, `#${id}`);
-            }
-        });
-    });
-
-</script>
-<script>
-    var mybutton = document.getElementById("top-link");
-    window.onscroll = function () {
-        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
-            mybutton.style.visibility = "visible";
-            mybutton.style.opacity = "1";
-        } else {
-            mybutton.style.visibility = "hidden";
-            mybutton.style.opacity = "0";
-        }
-    };
-
-</script>
-<script>
-    document.getElementById("theme-toggle").addEventListener("click", () => {
-        const html = document.querySelector("html");
-        if (html.dataset.theme === "dark") {
-            html.dataset.theme = 'light';
-            localStorage.setItem("pref-theme", 'light');
-        } else {
-            html.dataset.theme = 'dark';
-            localStorage.setItem("pref-theme", 'dark');
-        }
-    })
-
-</script>
-</body>
+</footer></body>
 
 </html>
