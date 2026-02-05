@@ -1,3 +1,13 @@
 📖 最近在读：
-- 《计算机程序的构造和解释》
-- 《线性代数及其应用》
+- 《社会契约论》
+
+💻 最近在用:
+
+* Gemini + Gemini CLI
+* ChatGPT + Codex
+* Microsoft Copilot
+
+🧑‍💻 编辑器:
+
+* VSCode
+* Antigravity
