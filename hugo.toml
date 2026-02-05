@@ -76,7 +76,20 @@ url = "https://github.com/paipaiio"
 
 [[params.socialIcons]]
 name = "email"
-url = "MuskZhouMQ@outlook.com"
+url = "mailto:MuskZhouMQ@outlook.com"
+
+[params.giscus]
+repo = "paipaiio/paipaiio.github.io"
+repoId = "R_kgDORI5CQg"
+category = "Comments"
+categoryId = "DIC_kwDORI5CQs4C15eQ"
+mapping = "pathname"
+strict = "0"
+reactionsEnabled = "1"
+emitMetadata = "0"
+inputPosition = "bottom"
+theme = "preferred_color_scheme"
+lang = "zh-CN"
 
 ########################
 # 顶部菜单
@@ -96,6 +109,8 @@ name = "关于"
 url = "/about/"
 weight = 3
 
+
+
 ########################
 # Markdown 渲染（推荐）
 ########################
@@ -111,15 +126,3 @@ weight = 3
   unsafe = true
 
 
-[params.giscus]
-repo = "paipaiio/paipaiio.github.io"
-repoId = "R_kgDORI5CQg"
-category = "Comments"
-categoryId = "DIC_kwDORI5CQs4C15eQ"
-mapping = "pathname"
-strict = "0"
-reactionsEnabled = "1"
-emitMetadata = "0"
-inputPosition = "bottom"
-theme = "preferred_color_scheme"
-lang = "zh-CN"
