@@ -21,6 +21,7 @@ home = ["HTML", "RSS", "JSON"]
 # PaperMod 参数
 ########################
 [params]
+comments = true
 
 # 内容主入口（非常重要）
 mainSections = ["posts"]
@@ -109,8 +110,6 @@ weight = 3
   [markup.goldmark.renderer]
   unsafe = true
 
-[params]
-comments = true
 
 [params.giscus]
 repo = "paipaiio/paipaiio.github.io"
