@@ -3,6 +3,8 @@ title: 帮助须知
 date: 2024-08-05 16:36:00
 img: help.png
 categories: ["教程"]
+type: "posts"
+draft: false
 cover:
   image: "help.png"
   alt: "文章封面图"
