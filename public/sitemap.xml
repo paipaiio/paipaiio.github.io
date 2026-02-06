@@ -29,6 +29,12 @@
     <loc>http://localhost:1313/categories/%E6%95%99%E7%A8%8B/</loc>
     <lastmod>2024-10-27T12:14:40+00:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/posts/%E5%B8%AE%E5%8A%A9%E9%A1%BB%E7%9F%A5/</loc>
+    <lastmod>2024-08-05T16:36:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/%E5%85%8D%E8%B4%A3%E7%94%B3%E6%98%8E/</loc>
+    <lastmod>2023-09-13T21:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/about/</loc>
     <lastmod>2023-04-27T08:32:26+08:00</lastmod>
   </url><url>
