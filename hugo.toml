@@ -112,6 +112,10 @@ url = "/about/"
 name = "👀 近期活动"
 url = "/now/"
 
+[[params.profileMode.buttons]]
+name = "⚙️ 小项目"
+url = "/projects/"
+
 ########################
 # 社交链接（右下角 / about 用）
 ########################
@@ -122,6 +126,14 @@ url = "https://github.com/paipaiio"
 [[params.socialIcons]]
 name = "email"
 url = "mailto:MuskZhouMQ@outlook.com"
+
+[[params.socialIcons]]
+name = "telegram"
+url = "https://t.me/MuskZhouMQ"
+
+[[params.socialIcons]]
+name = "x"
+url = "https://x.com/paipaiio_dev"
 
 [params.giscus]
 repo = "paipaiio/paipaiio.github.io"
