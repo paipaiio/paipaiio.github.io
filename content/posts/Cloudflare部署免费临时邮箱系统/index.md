@@ -1,7 +1,8 @@
 ---
 title: Cloudflare部署免费临时邮箱系统
 date: 2024-08-05 16:36:00
-tags: ["技术分享","白嫖","Cloudflare"]
+tags: ["技术分享", "白嫖", "Cloudflare"]
+tags: ["Serv00", "博客"]
 categories: ["教程"]
 type: "posts"
 comments: true
