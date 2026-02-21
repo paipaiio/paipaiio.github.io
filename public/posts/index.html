@@ -1,201 +1,16 @@
-<!DOCTYPE html>
-<html lang="en" dir="auto" data-theme="auto">
-
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="index, follow">
-<title>Posts | paipai’s blog</title>
-<meta name="keywords" content="">
-<meta name="description" content="Posts - paipai’s blog">
-<meta name="author" content="">
-<link rel="canonical" href="http://localhost:1313/posts/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
-<meta name="theme-color" content="#2e2e33">
-<meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/">
-<noscript>
-    <style>
-        #theme-toggle,
-        .top-link {
-            display: none;
-        }
-
-    </style>
-    <style>
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --theme: rgb(29, 30, 32);
-                --entry: rgb(46, 46, 51);
-                --primary: rgb(218, 218, 219);
-                --secondary: rgb(155, 156, 157);
-                --tertiary: rgb(65, 66, 68);
-                --content: rgb(196, 196, 197);
-                --code-block-bg: rgb(46, 46, 51);
-                --code-bg: rgb(55, 56, 62);
-                --border: rgb(51, 51, 51);
-                color-scheme: dark;
-            }
-
-            .list {
-                background: var(--theme);
-            }
-
-            .toc {
-                background: var(--entry);
-            }
-        }
-
-        @media (prefers-color-scheme: light) {
-            .list::-webkit-scrollbar-thumb {
-                border-color: var(--code-bg);
-            }
-        }
-
-    </style>
-</noscript>
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.querySelector("html").dataset.theme = 'dark';
-    } else if (localStorage.getItem("pref-theme") === "light") {
-       document.querySelector("html").dataset.theme = 'light';
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.querySelector("html").dataset.theme = 'dark';
-    } else {
-        document.querySelector("html").dataset.theme = 'light';
-    }
-
-</script><meta property="og:url" content="http://localhost:1313/posts/">
-  <meta property="og:site_name" content="paipai’s blog">
-  <meta property="og:title" content="Posts">
-  <meta property="og:description" content="MuskZhou 的个人博客，记录技术、折腾与思考">
-  <meta property="og:locale" content="en-us">
-  <meta property="og:type" content="website">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Posts">
-<meta name="twitter:description" content="MuskZhou 的个人博客，记录技术、折腾与思考">
-
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position":  1 ,
-      "name": "Posts",
-      "item": "http://localhost:1313/posts/"
-    }
-  ]
-}
-</script>
-</head>
-<body class="list" id="top">
-    <header class="header">
-    <nav class="nav">
-        <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="paipai’s blog (Alt + H)">paipai’s blog</a>
-            <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                    </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="5"></circle>
-                        <line x1="12" y1="1" x2="12" y2="3"></line>
-                        <line x1="12" y1="21" x2="12" y2="23"></line>
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                        <line x1="1" y1="12" x2="3" y2="12"></line>
-                        <line x1="21" y1="12" x2="23" y2="12"></line>
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                    </svg>
-                </button>
-            </div>
-        </div>
-        <ul id="menu">
-            <li>
-                <a href="http://localhost:1313/" title="首页">
-                    <span>首页</span>
-                </a>
-            </li>
-            <li>
-                <a href="http://localhost:1313/posts/" title="文章">
-                    <span class="active">文章</span>
-                </a>
-            </li>
-            <li>
-                <a href="http://localhost:1313/about/" title="关于">
-                    <span>关于</span>
-                </a>
-            </li>
-            <li>
-                <a href="http://localhost:1313/archives/" title="归档">
-                    <span>归档</span>
-                </a>
-            </li>
-            <li>
-                <a href="http://localhost:1313/tags/" title="标签">
-                    <span>标签</span>
-                </a>
-            </li>
-            <li>
-                <a href="http://localhost:1313/categories/" title="分类">
-                    <span>分类</span>
-                </a>
-            </li>
-            <li>
-                <a href="http://localhost:1313/search/" title="🔍">
-                    <span>🔍</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
-</header>
-<main class="main"> 
-<header class="page-header">
-  <h1>
-    Posts
-  </h1>
-</header>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hello
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>欢迎来到我的博客 这是我的博客的首页文章，我很高兴能与您分享我的思考和经验。
-关于我 我是一个热爱技术和写作的人，喜欢分享自己的学习和成果。这个博客是我记录和展示我的思考、项目和想法的地方。
-博客内容 在这个博客中，您将找到以下类型的文章：
-技术教程和指南 开发经验和心得分享 最新科技趋势和新闻评论 随笔和个人见解 如何使用这个博客 您可以浏览博客的不同分类和标签来查找感兴趣的文章。如果您对特定的主题或文章有任何疑问或建议，欢迎在评论区留言。
-订阅博客 如果您喜欢我的博客并希望及时收到新文章的更新，可以订阅我的博客。您可以在博客页面中找到订阅选项。
-联系我 如果您有任何问题、建议或合作机会，可以通过以下方式联系我：
-电子邮件：MuskZhouMQ@outlook.com QQ: 401674191 Twitter：@TUF_Pai 感谢您的阅读和支持！希望您在我的博客中找到有价值的信息和灵感。
-</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-02-05 00:00:00 +0000 UTC'>February 5, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to Hello" href="http://localhost:1313/posts/hello/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">如何在serv00部署自己的博客网站并且follow认证
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p> 你需要准备的东西是：
+<!doctype html><html lang=en dir=auto data-theme=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>Posts | paipai’s blog</title><meta name=keywords content><meta name=description content="Posts - paipai’s blog"><meta name=author content="MuskZhou"><link rel=canonical href=https://blog.paipaiio.com/posts/><link crossorigin=anonymous href=/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css integrity="sha256-2jIR5e+Ge/K3X9WmUVz+1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as=style><link rel=icon href=https://blog.paipaiio.com/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://blog.paipaiio.com/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://blog.paipaiio.com/favicon-32x32.png><link rel=apple-touch-icon href=https://blog.paipaiio.com/apple-touch-icon.png><link rel=mask-icon href=https://blog.paipaiio.com/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=en href=https://blog.paipaiio.com/posts/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51);color-scheme:dark}.list{background:var(--theme)}.toc{background:var(--entry)}}@media(prefers-color-scheme:light){.list::-webkit-scrollbar-thumb{border-color:var(--code-bg)}}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"?document.querySelector("html").dataset.theme="dark":localStorage.getItem("pref-theme")==="light"?document.querySelector("html").dataset.theme="light":window.matchMedia("(prefers-color-scheme: dark)").matches?document.querySelector("html").dataset.theme="dark":document.querySelector("html").dataset.theme="light"</script><meta property="og:url" content="https://blog.paipaiio.com/posts/"><meta property="og:site_name" content="paipai’s blog"><meta property="og:title" content="Posts"><meta property="og:description" content="MuskZhou 的个人博客，记录技术、折腾与思考"><meta property="og:locale" content="en-us"><meta property="og:type" content="website"><meta name=twitter:card content="summary"><meta name=twitter:title content="Posts"><meta name=twitter:description content="MuskZhou 的个人博客，记录技术、折腾与思考"><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://blog.paipaiio.com/posts/"}]}</script></head><body class=list id=top><header class=header><nav class=nav><div class=logo><a href=https://blog.paipaiio.com/ accesskey=h title="paipai’s blog (Alt + H)">paipai’s blog</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme">
+<svg id="moon" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+<svg id="sun" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu><li><a href=https://blog.paipaiio.com/ title=首页><span>首页</span></a></li><li><a href=https://blog.paipaiio.com/posts/ title=文章><span class=active>文章</span></a></li><li><a href=https://blog.paipaiio.com/about/ title=关于><span>关于</span></a></li><li><a href=https://blog.paipaiio.com/archives/ title=归档><span>归档</span></a></li><li><a href=https://blog.paipaiio.com/tags/ title=标签><span>标签</span></a></li><li><a href=https://blog.paipaiio.com/categories/ title=分类><span>分类</span></a></li><li><a href=https://blog.paipaiio.com/search/ title=🔍><span>🔍</span></a></li></ul></nav></header><main class=main><header class=page-header><h1>Posts</h1></header><article class=post-entry><header class=entry-header><h2 class=entry-hint-parent>中学生投资学习系统</h2></header><div class=entry-content><p>重塑金融教培基础设施：基于 DeepSeek AI 驱动的全仿真模拟股市系统架构解析 在现代金融教育、量化策略启蒙以及商业财商培训中，传统的模拟交易平台往往只能提供一个静态的、规则死板的“沙盒”。这类系统缺乏真实二级市场的复杂博弈属性，难以让受训者体验到流动性危机、情绪周期以及机构博弈带来的真实市场冲击。
+为突破这一瓶颈，我们自主研发了下一代全仿真模拟股市教学系统 。该系统不仅仅是一个交易撮合引擎，更是通过深度集成大语言模型（DeepSeek API）构建的复杂自适应系统（Complex Adaptive System） 。它能够在零风险的环境下，完美映射真实金融市场的高阶动态特征。
+一、 严密的微观市场结构与宏观周期建模 本系统在底层交易逻辑上严格遵循现代金融市场规范，构建了一个极具深度的虚拟经济体。
+1. 资产标的与交易机制复刻 系统内置了覆盖消费、科技、娱乐、生活四大核心板块的 24 至 25 只虚拟股票 。不同资产不仅拥有独立的波动率（0.3~0.85）与基本面评分，还内置了严密的供应链传导逻辑 。例如，上游“芯片大师”的利好政策，会通过底层算法直接传导至下游的“未来机器人”与“电动未来” 。
+在交易规则上，系统支持高度拟真的市场微观结构：
+T+1 交易制度与时间标度：系统将现实交易日压缩，约每 2 分钟为一个完整的交易日（包含 120 个 tick），交易日之间穿插 60 秒的休市倒计时，用于受训者进行复盘与策略调整 。
+高阶挂单与做空机制：除市价买卖外，支持限价单、止损单与止盈单 。同时开放了做空机制，要求缴纳 1.5 倍至 2 倍的保证金，并每日计提借券费，当亏损达到阈值时将触发无情的强制平仓引擎 。
+市场摩擦与通胀侵蚀：完美的投资模型必须考量摩擦成本。系统引入了阶梯式交易手续费（0.15% 至 1.5%）、按持有天数递减的资本利得税模型 ，以及每日扣减的通胀摩擦费率 ，逼迫玩家克服“持币观望”的惰性。
+2. 宏观经济周期与事件驱动 市场绝非线性发展。系统内置了宏观经济周期轮转引擎，市场会在扩张期（春）、过热期（夏）、衰退期（秋）与萧条期（冬）四大阶段中自动循环 。此外，“黑天鹅事件”生成器会随机投放市场崩盘、特别分红、股票拆分或技术突破等极端事件，全方位考验受训者的风控能力 。
+graph TD A[扩张期 春天&lt;br>经济向好复苏] -->|过热| B[过热期 夏天&lt;br>情绪狂热] B -->|滞胀/加息| C[衰退期 秋天&lt;br>经济下行] C -->|出清| D[萧条期 冬天&lt;br>筑底等待复苏] D -->|降息/刺激| A classDef spring fill:#e8f5e9,stroke:#4caf50,stroke-width:2px; classDef summer fill:#ffebee,stroke:#f44336,stroke-width:2px; classDef autumn fill:#fff8e1,stroke:#ffc107,stroke-width:2px; classDef winter fill:#e3f2fd,stroke:#2196f3,stroke-width:2px; class A spring; class B summer; class C autumn; class D winter; 二、 核心壁垒：12 个 AI 智能子模块构成的“市场大脑” 市面上绝大多数产品依赖预设的随机脚本，而本系统的灵魂在于其深度集成了基于 DeepSeek API 的 12 个独立 AI 子模块，实现了真正意义上的“AI 驱动市场” 。
+...</p></div><footer class=entry-footer><span title='2026-02-21 11:09:01 +0800 CST'>February 21, 2026</span>&nbsp;·&nbsp;<span>MuskZhou</span></footer><a class=entry-link aria-label="post link to 中学生投资学习系统" href=https://blog.paipaiio.com/posts/stock-simulator/></a></article><article class=post-entry><header class=entry-header><h2 class=entry-hint-parent>如何在serv00部署自己的博客网站并且follow认证</h2></header><div class=entry-content><p>你需要准备的东西是：
 一个serv00账号 一点点的电脑操作能力 一个域名 一、登陆serv00并添加网站（无自己域名的请直接跳转到第二步） 找到左侧菜单栏的WWW websites
 找到add new websites，并且添加你自己的域名
 点击DNS zones并找到自己刚刚的域名，点击域名右侧的edit查看解析
@@ -218,117 +33,29 @@
 选择撰写文章
 输入认证内容，文章名随意，选择发布文章
 回到follow选择认证即可完成
-认证完成后可以删除该认证文章。
-</p>
-  </div>
-  <footer class="entry-footer"><span title='2024-10-27 12:14:40 +0000 UTC'>October 27, 2024</span></footer>
-  <a class="entry-link" aria-label="post link to 如何在serv00部署自己的博客网站并且follow认证" href="http://localhost:1313/posts/%E5%A6%82%E4%BD%95%E5%9C%A8serv00%E9%83%A8%E7%BD%B2%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99%E5%B9%B6%E4%B8%94follow%E8%AE%A4%E8%AF%81/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">帮助须知
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>1.软件下载 ​	打开软件官网并且根据自己的设备型号选择软件下载，https://rustdesk.com/。此处提供Mac&#43;Win部分架构的下载链接。
-Google Drive OneDrive iCloud macOS（M芯片） rustdesk-1.4.5-aarch64.dmg rustdesk-1.4.5-aarch64.dmg rustdesk-1.4.5-aarch64.dmg Windows（x86） rustdesk-1.4.5-x86_64.exe rustdesk-1.4.5-x86_64.exe rustdesk-1.4.5-x86_64.exe 2.配置软件 ​	1.点击ID旁边的三个点
-​	2.选择网络设置，然后选择解锁网络设置
+认证完成后可以删除该认证文章。</p></div><footer class=entry-footer><span title='2024-10-27 12:14:40 +0000 UTC'>October 27, 2024</span>&nbsp;·&nbsp;<span>MuskZhou</span></footer><a class=entry-link aria-label="post link to 如何在serv00部署自己的博客网站并且follow认证" href=https://blog.paipaiio.com/posts/%E5%A6%82%E4%BD%95%E5%9C%A8serv00%E9%83%A8%E7%BD%B2%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99%E5%B9%B6%E4%B8%94follow%E8%AE%A4%E8%AF%81/></a></article><article class=post-entry><header class=entry-header><h2 class=entry-hint-parent>Cloudflare部署免费临时邮箱系统</h2></header><div class=entry-content><p>项目原地址：https://github.com/dreamhunter2333/cloudflare_temp_email
+演示地址：tm.b4.hk
+[!NOTE]
+事先准备内容：
+一个cloudflare账户
+两个域名，分别对应
+前端: tm.b4.hk
+后端: tmapi.b4.hk
+D1数据库配置 打开Cloudflare主页 选择左边侧栏的Workers和Pages，点进去 选择左边侧栏的D1，点进去 创建数据库，选择仪表盘，名字填dev,然后点击创建
+选择控制台
+在命令行处输入以下指令，然后执行，出现一下提示说明已经完成
+CREATE TABLE IF NOT EXISTS raw_mails ( id INTEGER PRIMARY KEY, message_id TEXT, source TEXT, address TEXT, raw TEXT, created_at DATETIME DEFAULT CURRENT_TIMESTAMP ); CREATE INDEX IF NOT EXISTS idx_raw_mails_address ON raw_mails(address); CREATE TABLE IF NOT EXISTS address ( id INTEGER PRIMARY KEY, name TEXT UNIQUE, created_at DATETIME DEFAULT CURRENT_TIMESTAMP, updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ); CREATE INDEX IF NOT EXISTS idx_address_name ON address(name); CREATE TABLE IF NOT EXISTS auto_reply_mails ( id INTEGER PRIMARY KEY, source_prefix TEXT, name TEXT, address TEXT UNIQUE, subject TEXT, message TEXT, enabled INTEGER DEFAULT 1, created_at DATETIME DEFAULT CURRENT_TIMESTAMP ); CREATE INDEX IF NOT EXISTS idx_auto_reply_mails_address ON auto_reply_mails(address); CREATE TABLE IF NOT EXISTS address_sender ( id INTEGER PRIMARY KEY, address TEXT UNIQUE, balance INTEGER DEFAULT 0, enabled INTEGER DEFAULT 1, created_at DATETIME DEFAULT CURRENT_TIMESTAMP ); CREATE INDEX IF NOT EXISTS idx_address_sender_address ON address_sender(address); CREATE TABLE IF NOT EXISTS sendbox ( id INTEGER PRIMARY KEY, address TEXT, raw TEXT, created_at DATETIME DEFAULT CURRENT_TIMESTAMP ); CREATE INDEX IF NOT EXISTS idx_sendbox_address ON sendbox(address); CREATE TABLE IF NOT EXISTS settings ( key TEXT PRIMARY KEY, value TEXT, created_at DATETIME DEFAULT CURRENT_TIMESTAMP, updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ); CREATE TABLE IF NOT EXISTS users ( id INTEGER PRIMARY KEY, user_email TEXT UNIQUE NOT NULL, password TEXT NOT NULL, user_info TEXT, created_at DATETIME DEFAULT CURRENT_TIMESTAMP, updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ); CREATE INDEX IF NOT EXISTS idx_users_user_email ON users(user_email); CREATE TABLE IF NOT EXISTS users_address ( id INTEGER PRIMARY KEY, user_id INTEGER, address_id INTEGER UNIQUE, created_at DATETIME DEFAULT CURRENT_TIMESTAMP ); CREATE INDEX IF NOT EXISTS idx_users_address_user_id ON users_address(user_id); CREATE INDEX IF NOT EXISTS idx_users_address_address_id ON users_address(address_id); CREATE TABLE IF NOT EXISTS user_roles ( id INTEGER PRIMARY KEY, user_id INTEGER UNIQUE NOT NULL, role_text TEXT, created_at DATETIME DEFAULT CURRENT_TIMESTAMP, updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ); CREATE INDEX IF NOT EXISTS idx_user_roles_user_id ON user_roles(user_id); 指令来源：https://github.com/dreamhunter2333/cloudflare_temp_email/blob/main/db/schema.sql
+...</p></div><footer class=entry-footer><span title='2024-08-05 16:36:00 +0000 UTC'>August 5, 2024</span>&nbsp;·&nbsp;<span>MuskZhou</span></footer><a class=entry-link aria-label="post link to Cloudflare部署免费临时邮箱系统" href=https://blog.paipaiio.com/posts/cloudflare%E9%83%A8%E7%BD%B2%E5%85%8D%E8%B4%B9%E4%B8%B4%E6%97%B6%E9%82%AE%E7%AE%B1%E7%B3%BB%E7%BB%9F/></a></article><article class=post-entry><header class=entry-header><h2 class=entry-hint-parent>帮助须知</h2></header><div class=entry-content><p>1.软件下载 ​ 打开软件官网并且根据自己的设备型号选择软件下载，https://rustdesk.com/。此处提供Mac+Win部分架构的下载链接。
+Google Drive OneDrive iCloud macOS（M芯片） rustdesk-1.4.5-aarch64.dmg rustdesk-1.4.5-aarch64.dmg rustdesk-1.4.5-aarch64.dmg Windows（x86） rustdesk-1.4.5-x86_64.exe rustdesk-1.4.5-x86_64.exe rustdesk-1.4.5-x86_64.exe 2.配置软件 ​ 1.点击ID旁边的三个点
+​ 2.选择网络设置，然后选择解锁网络设置
 选择ID/中继服务器 复制我发你的一串字符，并且点击导入
-回到主页，将ID和一次性密码发给我
-</p>
-  </div>
-  <footer class="entry-footer"><span title='2024-08-05 16:36:00 +0000 UTC'>August 5, 2024</span></footer>
-  <a class="entry-link" aria-label="post link to 帮助须知" href="http://localhost:1313/posts/%E5%B8%AE%E5%8A%A9%E9%A1%BB%E7%9F%A5/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">免责申明
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>免责申明 免责声明：
+回到主页，将ID和一次性密码发给我</p></div><footer class=entry-footer><span title='2024-08-05 16:36:00 +0000 UTC'>August 5, 2024</span>&nbsp;·&nbsp;<span>MuskZhou</span></footer><a class=entry-link aria-label="post link to 帮助须知" href=https://blog.paipaiio.com/posts/%E5%B8%AE%E5%8A%A9%E9%A1%BB%E7%9F%A5/></a></article><article class=post-entry><header class=entry-header><h2 class=entry-hint-parent>免责申明</h2></header><div class=entry-content><p>免责申明 免责声明：
 本人所发表的所有内容、观点或言论均仅代表个人观点，与任何组织、机构或个人无关。请注意，所有内容均为虚构，不代表任何真实事件或事实。读者或听众请自行判断并承担所有风险。
 此致，
-Pai 敬上
-</p>
-  </div>
-  <footer class="entry-footer"><span title='2023-09-13 21:00:00 +0000 UTC'>September 13, 2023</span></footer>
-  <a class="entry-link" aria-label="post link to 免责申明" href="http://localhost:1313/posts/%E5%85%8D%E8%B4%A3%E7%94%B3%E6%98%8E/"></a>
-</article>
-    </main>
-    
-<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
-        <path d="M12 6H0l6-6z" />
-    </svg>
-</a><footer class="footer">
-    <span>
-        Copyright © 2026 paipaiNetWork & Made by MuskZhou
-    </span>
-</footer>
-
-<script>
-    let menu = document.getElementById('menu');
-    if (menu) {
-        
-        const scrollPosition = localStorage.getItem("menu-scroll-position");
-        if (scrollPosition) {
-            menu.scrollLeft = parseInt(scrollPosition, 10);
-        }
-        
-        menu.onscroll = function () {
-            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
-        }
-    }
-
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener("click", function (e) {
-            e.preventDefault();
-            var id = this.getAttribute("href").substr(1);
-            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
-                    behavior: "smooth"
-                });
-            } else {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
-            }
-            if (id === "top") {
-                history.replaceState(null, null, " ");
-            } else {
-                history.pushState(null, null, `#${id}`);
-            }
-        });
-    });
-
-</script>
-<script>
-    var mybutton = document.getElementById("top-link");
-    window.onscroll = function () {
-        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
-            mybutton.style.visibility = "visible";
-            mybutton.style.opacity = "1";
-        } else {
-            mybutton.style.visibility = "hidden";
-            mybutton.style.opacity = "0";
-        }
-    };
-
-</script>
-<script>
-    document.getElementById("theme-toggle").addEventListener("click", () => {
-        const html = document.querySelector("html");
-        if (html.dataset.theme === "dark") {
-            html.dataset.theme = 'light';
-            localStorage.setItem("pref-theme", 'light');
-        } else {
-            html.dataset.theme = 'dark';
-            localStorage.setItem("pref-theme", 'dark');
-        }
-    })
-
-</script>
-</body>
-
-</html>
+Pai 敬上</p></div><footer class=entry-footer><span title='2023-09-13 21:00:00 +0000 UTC'>September 13, 2023</span>&nbsp;·&nbsp;<span>MuskZhou</span></footer><a class=entry-link aria-label="post link to 免责申明" href=https://blog.paipaiio.com/posts/%E5%85%8D%E8%B4%A3%E7%94%B3%E6%98%8E/></a></article><article class=post-entry><header class=entry-header><h2 class=entry-hint-parent>Hello</h2></header><div class=entry-content><p>欢迎来到我的博客 这是我的博客的首页文章，我很高兴能与您分享我的思考和经验。
+关于我 我是一个热爱技术和写作的人，喜欢分享自己的学习和成果。这个博客是我记录和展示我的思考、项目和想法的地方。
+博客内容 在这个博客中，您将找到以下类型的文章：
+技术教程和指南 开发经验和心得分享 最新科技趋势和新闻评论 随笔和个人见解 如何使用这个博客 您可以浏览博客的不同分类和标签来查找感兴趣的文章。如果您对特定的主题或文章有任何疑问或建议，欢迎在评论区留言。
+订阅博客 如果您喜欢我的博客并希望及时收到新文章的更新，可以订阅我的博客。您可以在博客页面中找到订阅选项。
+联系我 如果您有任何问题、建议或合作机会，可以通过以下方式联系我：
+电子邮件：MuskZhouMQ@outlook.com QQ: 401674191 Twitter：@TUF_Pai 感谢您的阅读和支持！希望您在我的博客中找到有价值的信息和灵感。</p></div><footer class=entry-footer><span title='2023-05-21 00:00:00 +0000 UTC'>May 21, 2023</span>&nbsp;·&nbsp;<span>MuskZhou</span></footer><a class=entry-link aria-label="post link to Hello" href=https://blog.paipaiio.com/posts/hello/></a></article></main><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentColor"><path d="M12 6H0l6-6z"/></svg></a><footer class=footer><span>Copyright © 2026 paipaiNetWork & Made by MuskZhou</span></footer><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script></body></html>

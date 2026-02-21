@@ -25,6 +25,7 @@ term = ["HTML"]
 # PaperMod 参数
 ########################
 [params]
+author = "MuskZhou"
 comments = true
 
 enableGitInfo = true
