@@ -73,10 +73,6 @@
   data-lang="{{ site.Params.giscus.lang }}" crossorigin="anonymous" async>
   </script>
 
-{{ if .Params.mermaid }}
-{{ partial "mermaid.html" . }}
-{{ end }}
-
 <script>
   const setGiscusTheme = () => {
     const theme = document.documentElement.classList.contains('dark')
@@ -94,5 +90,9 @@
 </script>
 
 {{ end }}
+
+{{- if .Page.Store.Get "hasMermaid" }}
+{{ partial "mermaid.html" . }}
+{{- end }}
 
 {{- end }}{{/* end main */}}

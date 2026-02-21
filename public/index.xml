@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>paipai’s blog</title><link>https://blog.paipaiio.com/</link><description>Recent content on paipai’s blog</description><generator>Hugo -- 0.155.2</generator><language>en-us</language><lastBuildDate>Sat, 21 Feb 2026 11:09:01 +0800</lastBuildDate><atom:link href="https://blog.paipaiio.com/index.xml" rel="self" type="application/rss+xml"/><item><title>中学生投资学习系统</title><link>https://blog.paipaiio.com/posts/stock-simulator/</link><pubDate>Sat, 21 Feb 2026 11:09:01 +0800</pubDate><guid>https://blog.paipaiio.com/posts/stock-simulator/</guid><description>&lt;h1 id="重塑金融教培基础设施基于-deepseek-ai-驱动的全仿真模拟股市系统架构解析"&gt;重塑金融教培基础设施：基于 DeepSeek AI 驱动的全仿真模拟股市系统架构解析&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>paipai’s blog</title><link>https://blog.paipaiio.com/</link><description>Recent content on paipai’s blog</description><generator>Hugo -- 0.156.0</generator><language>en-us</language><lastBuildDate>Sat, 21 Feb 2026 11:09:01 +0800</lastBuildDate><atom:link href="https://blog.paipaiio.com/index.xml" rel="self" type="application/rss+xml"/><item><title>中学生投资学习系统</title><link>https://blog.paipaiio.com/posts/stock-simulator/</link><pubDate>Sat, 21 Feb 2026 11:09:01 +0800</pubDate><guid>https://blog.paipaiio.com/posts/stock-simulator/</guid><description>&lt;h1 id="重塑金融教培基础设施基于-deepseek-ai-驱动的全仿真模拟股市系统架构解析"&gt;重塑金融教培基础设施：基于 DeepSeek AI 驱动的全仿真模拟股市系统架构解析&lt;/h1&gt;
 &lt;p&gt;在现代金融教育、量化策略启蒙以及商业财商培训中，传统的模拟交易平台往往只能提供一个静态的、规则死板的“沙盒”。这类系统缺乏真实二级市场的复杂博弈属性，难以让受训者体验到流动性危机、情绪周期以及机构博弈带来的真实市场冲击。&lt;/p&gt;
 &lt;p&gt;为突破这一瓶颈，我们自主研发了下一代&lt;strong&gt;全仿真模拟股市教学系统&lt;/strong&gt; 。该系统不仅仅是一个交易撮合引擎，更是通过深度集成大语言模型（DeepSeek API）构建的复杂自适应系统（Complex Adaptive System） 。它能够在零风险的环境下，完美映射真实金融市场的高阶动态特征。&lt;/p&gt;
 &lt;img src="1.png" style="zoom:50%;" /&gt;
@@ -8,35 +8,27 @@
 &lt;p&gt;系统内置了覆盖消费、科技、娱乐、生活四大核心板块的 24 至 25 只虚拟股票 。不同资产不仅拥有独立的波动率（0.3~0.85）与基本面评分，还内置了严密的供应链传导逻辑 。例如，上游“芯片大师”的利好政策，会通过底层算法直接传导至下游的“未来机器人”与“电动未来” 。&lt;/p&gt;
 &lt;p&gt;在交易规则上，系统支持高度拟真的市场微观结构：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;T+1 交易制度与时间标度&lt;/strong&gt;：系统将现实交易日压缩，约每 2 分钟为一个完整的交易日（包含 120 个 tick），交易日之间穿插 60 秒的休市倒计时，用于受训者进行复盘与策略调整 。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;高阶挂单与做空机制&lt;/strong&gt;：除市价买卖外，支持限价单、止损单与止盈单 。同时开放了做空机制，要求缴纳 1.5 倍至 2 倍的保证金，并每日计提借券费，当亏损达到阈值时将触发无情的强制平仓引擎 。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;市场摩擦与通胀侵蚀&lt;/strong&gt;：完美的投资模型必须考量摩擦成本。系统引入了阶梯式交易手续费（0.15% 至 1.5%）、按持有天数递减的资本利得税模型 ，以及每日扣减的通胀摩擦费率 ，逼迫玩家克服“持币观望”的惰性。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;T+1 交易制度与时间标度&lt;/strong&gt;：系统将现实交易日压缩，约每 2 分钟为一个完整的交易日（包含 120 个 tick），交易日之间穿插 60 秒的休市倒计时，用于受训者进行复盘与策略调整 。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;高阶挂单与做空机制&lt;/strong&gt;：除市价买卖外，支持限价单、止损单与止盈单 。同时开放了做空机制，要求缴纳 1.5 倍至 2 倍的保证金，并每日计提借券费，当亏损达到阈值时将触发无情的强制平仓引擎 。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;市场摩擦与通胀侵蚀&lt;/strong&gt;：完美的投资模型必须考量摩擦成本。系统引入了阶梯式交易手续费（0.15% 至 1.5%）、按持有天数递减的资本利得税模型 ，以及每日扣减的通胀摩擦费率 ，逼迫玩家克服“持币观望”的惰性。&lt;/p&gt;
 &lt;h3 id="2-宏观经济周期与事件驱动"&gt;2. 宏观经济周期与事件驱动&lt;/h3&gt;
 &lt;p&gt;市场绝非线性发展。系统内置了宏观经济周期轮转引擎，市场会在扩张期（春）、过热期（夏）、衰退期（秋）与萧条期（冬）四大阶段中自动循环 。此外，“黑天鹅事件”生成器会随机投放市场崩盘、特别分红、股票拆分或技术突破等极端事件，全方位考验受训者的风控能力 。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;graph TD
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; A[扩张期 春天&amp;lt;br&amp;gt;经济向好复苏] --&amp;gt;|过热| B[过热期 夏天&amp;lt;br&amp;gt;情绪狂热]
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; B --&amp;gt;|滞胀/加息| C[衰退期 秋天&amp;lt;br&amp;gt;经济下行]
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; C --&amp;gt;|出清| D[萧条期 冬天&amp;lt;br&amp;gt;筑底等待复苏]
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; D --&amp;gt;|降息/刺激| A
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; classDef spring fill:#e8f5e9,stroke:#4caf50,stroke-width:2px;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; classDef summer fill:#ffebee,stroke:#f44336,stroke-width:2px;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; classDef autumn fill:#fff8e1,stroke:#ffc107,stroke-width:2px;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; classDef winter fill:#e3f2fd,stroke:#2196f3,stroke-width:2px;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; class A spring;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; class B summer;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; class C autumn;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; class D winter;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="二-核心壁垒12-个-ai-智能子模块构成的市场大脑"&gt;二、 核心壁垒：12 个 AI 智能子模块构成的“市场大脑”&lt;/h2&gt;
+&lt;pre class="mermaid"&gt;graph TD
+A[扩张期 春天&lt;br&gt;经济向好复苏] --&gt;|过热| B[过热期 夏天&lt;br&gt;情绪狂热]
+B --&gt;|滞胀/加息| C[衰退期 秋天&lt;br&gt;经济下行]
+C --&gt;|出清| D[萧条期 冬天&lt;br&gt;筑底等待复苏]
+D --&gt;|降息/刺激| A
+classDef spring fill:#e8f5e9,stroke:#4caf50,stroke-width:2px;
+classDef summer fill:#ffebee,stroke:#f44336,stroke-width:2px;
+classDef autumn fill:#fff8e1,stroke:#ffc107,stroke-width:2px;
+classDef winter fill:#e3f2fd,stroke:#2196f3,stroke-width:2px;
+class A spring;
+class B summer;
+class C autumn;
+class D winter;
+&lt;/pre&gt;
+&lt;h2 id="二-核心壁垒12-个-ai-智能子模块构成的市场大脑"&gt;二、 核心壁垒：12 个 AI 智能子模块构成的“市场大脑”&lt;/h2&gt;
 &lt;p&gt;市面上绝大多数产品依赖预设的随机脚本，而本系统的灵魂在于其深度集成了基于 DeepSeek API 的 12 个独立 AI 子模块，实现了真正意义上的“AI 驱动市场” 。&lt;/p&gt;</description></item><item><title>如何在serv00部署自己的博客网站并且follow认证</title><link>https://blog.paipaiio.com/posts/%E5%A6%82%E4%BD%95%E5%9C%A8serv00%E9%83%A8%E7%BD%B2%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99%E5%B9%B6%E4%B8%94follow%E8%AE%A4%E8%AF%81/</link><pubDate>Sun, 27 Oct 2024 12:14:40 +0000</pubDate><guid>https://blog.paipaiio.com/posts/%E5%A6%82%E4%BD%95%E5%9C%A8serv00%E9%83%A8%E7%BD%B2%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99%E5%B9%B6%E4%B8%94follow%E8%AE%A4%E8%AF%81/</guid><description>&lt;blockquote&gt;
 &lt;p&gt;你需要准备的东西是：&lt;/p&gt;
 &lt;ol&gt;
