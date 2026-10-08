@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="paipai’s blog 的写作、预览、配置与 GitHub Pages 发布流程。单文件交互指南。">
+<title>博客使用手册 · paipai</title>
+<style>
+:root{color-scheme:light;--bg:#f6f5f1;--paper:#fff;--text:#283b36;--muted:#67746e;--line:#deded5;--accent:#286452;--soft:#e9f0e9;--code:#182b26;--code-text:#ecf2ea;--warn:#8a6129;--radius:8px}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:15px/1.75 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}a{color:var(--accent);text-underline-offset:3px}button,input,select,textarea{font:inherit}button{cursor:pointer;border:1px solid var(--line);border-radius:5px;background:var(--paper);color:var(--text);padding:6px 12px}button:hover{border-color:var(--accent);background:var(--soft)}button:disabled{opacity:.5;cursor:default}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #b9ccbd;outline-offset:3px}button.primary{background:var(--accent);border-color:var(--accent);color:#fff}[hidden]{display:none!important}.topbar{position:sticky;top:0;z-index:5;border-bottom:1px solid var(--line);background:var(--bg);padding:16px 28px;display:flex;justify-content:space-between;gap:20px;align-items:center}.brand{font-size:18px;letter-spacing:-.4px;font-weight:750}.brand small{display:block;font-size:12px;color:var(--muted);letter-spacing:.1px;font-weight:450}.topbar .links{display:flex;gap:18px;font-size:13px}.shell{max-width:1370px;margin:auto;display:grid;grid-template-columns:235px minmax(0,1fr);gap:44px;padding:30px 28px 80px}.sidebar{position:sticky;top:112px;align-self:start;max-height:calc(100vh - 145px);overflow:auto;padding-right:14px}.sidebar nav{display:grid;gap:4px}.sidebar a{display:block;text-decoration:none;padding:6px 12px;border-left:2px solid transparent;color:var(--muted);font-size:13px}.sidebar a.active{color:var(--accent);border-left-color:var(--accent);background:var(--soft);font-weight:700}.nav-label{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);padding:18px 12px 5px}.sidebar .meta{margin:25px 12px 0;padding-top:16px;border-top:1px solid var(--line);font-size:12px;color:var(--muted)}main{min-width:0}.tabs{display:flex;gap:6px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:30px}.tabs button{background:none;border:1px solid transparent;font-size:13px;padding:6px 12px}.tabs button[aria-selected=true]{background:var(--paper);border-color:var(--line);color:var(--accent);font-weight:700}.section-heading{font-size:12px;color:var(--accent);letter-spacing:1.5px;text-transform:uppercase}.panel>h1{font-size:32px;line-height:1.35;letter-spacing:-1px;margin:8px 0 14px}.lead{font-size:16px;color:var(--muted);max-width:700px}.panel section{margin:34px 0;padding-top:10px;scroll-margin-top:110px}.panel h2{font-size:22px;letter-spacing:-.5px;margin:0 0 14px}.panel h3{font-size:16px;margin:23px 0 10px}.panel p{margin:10px 0}.tag{display:inline-block;font-size:11px;font-weight:650;color:var(--accent);background:var(--soft);border-radius:3px;padding:2px 7px;margin-right:6px}.flow{display:grid;grid-template-columns:repeat(4,1fr);margin:25px 0;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}.flow a{display:block;padding:16px;background:var(--paper);border-right:1px solid var(--line);text-decoration:none;color:var(--text)}.flow a:last-child{border:0}.flow strong{display:block;font-size:14px}.flow small{color:var(--muted);font-size:12px}.note{border-left:3px solid var(--accent);padding:11px 16px;background:var(--soft);margin:18px 0;font-size:13px}.note.warning{border-color:var(--warn);background:#f4edde}.codeblock{position:relative;border-radius:6px;background:var(--code);margin:16px 0;overflow:hidden}.codebar{display:flex;align-items:center;justify-content:space-between;padding:7px 12px;border-bottom:1px solid #3a4d44;color:#b9c7bd;font-size:11px;gap:10px}.codebar button{padding:2px 9px;font-size:11px;color:var(--code-text);background:transparent;border-color:#51665a}.codebar button:hover{background:#2b4639}pre{margin:0;overflow:auto;padding:17px 18px;color:var(--code-text);font:12.5px/1.8 ui-monospace,SFMono-Regular,Consolas,"Liberation Mono",monospace;tab-size:2}pre code{font:inherit;background:none;color:inherit;padding:0}p code,li code,td code,.lead code{background:#e9ece5;border-radius:3px;padding:1px 5px;font:12.5px/1.6 ui-monospace,SFMono-Regular,Consolas,monospace;overflow-wrap:anywhere}.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:6px;margin:16px 0}table{width:100%;border-collapse:collapse;background:var(--paper);font-size:13px;text-align:left}th,td{padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}th{color:var(--muted);font-size:11px;background:#f1f3ed;white-space:nowrap}tr:last-child td{border-bottom:0}.editor{border:1px solid var(--line);border-radius:var(--radius);padding:22px;background:var(--paper);margin:20px 0}.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px 20px}.form-grid label{display:grid;gap:5px;font-size:12px;color:var(--muted)}.form-grid .full{grid-column:1/-1}input[type=text],input[type=url],input[type=datetime-local],input[type=number],select,textarea{width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:5px;color:var(--text);background:var(--bg)}textarea{resize:vertical;min-height:74px}.checks{display:flex;gap:18px;flex-wrap:wrap;margin:17px 0}.checks label{display:flex;gap:7px;align-items:center;font-size:13px}.checks input,.checklist input{accent-color:var(--accent)}.status{margin:12px 0;font-size:12px;color:var(--muted);overflow-wrap:anywhere}.status.error{color:#b13034}.output-caption{font-size:13px;color:var(--muted);margin:16px 0 4px}.param-layout{display:grid;grid-template-columns:1fr 1fr;gap:22px}.param-layout .form-grid{grid-template-columns:1fr}.param-layout .codeblock{margin:0}details{border-top:1px solid var(--line);padding:14px 0}summary{cursor:pointer;font-weight:650}.checklist{padding:0;list-style:none}.checklist li{margin:0;border-bottom:1px solid var(--line)}.checklist label{display:flex;gap:12px;padding:12px 0;align-items:flex-start}.checklist input{margin-top:7px}.checklist input:checked+span{text-decoration:line-through;color:var(--muted)}progress{width:100%;height:9px;accent-color:var(--accent)}.step-nav{display:flex;justify-content:space-between;gap:20px;padding-top:25px;border-top:1px solid var(--line);margin-top:34px}.step-nav a{font-size:13px;text-decoration:none}.muted{color:var(--muted)}.small{font-size:12px}.footer{font-size:12px;color:var(--muted);border-top:1px solid var(--line);padding-top:22px;margin-top:35px}.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);z-index:20;padding:10px 18px;border-radius:6px;background:var(--code);color:#fff;font-size:13px;max-width:calc(100% - 32px)}
+@media(max-width:1000px){.shell{grid-template-columns:185px minmax(0,1fr);gap:25px}.flow{grid-template-columns:repeat(2,1fr)}.flow a:nth-child(2){border-right:0}.flow a:nth-child(-n+2){border-bottom:1px solid var(--line)}.param-layout{grid-template-columns:1fr}}
+@media(max-width:720px){.topbar{padding:13px 18px}.topbar .links{gap:12px;font-size:12px}.brand{font-size:16px}.shell{display:block;padding:20px 18px 50px}.sidebar{position:static;max-height:none;padding:0;margin-bottom:20px}.sidebar nav{display:flex;gap:5px;overflow:auto;flex-wrap:nowrap}.sidebar a{white-space:nowrap;padding:6px 9px;border:1px solid var(--line);border-radius:4px;font-size:12px}.sidebar a.active{border-color:var(--accent)}.nav-label,.sidebar .meta{display:none}.tabs{margin-bottom:24px;gap:0}.tabs button{padding:6px 9px}.panel>h1{font-size:27px}.form-grid{grid-template-columns:1fr}.form-grid .full{grid-column:auto}.editor{padding:17px}.lead{font-size:15px}pre{padding:15px;font-size:11.5px}th,td{padding:10px}.flow a{padding:13px}}
+@media(prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+</style>
+</head>
+<body>
+<header class="topbar"><div class="brand">博客使用手册<small>paipai’s blog · 从第一篇草稿到正式发布</small></div><div class="links"><a href="http://127.0.0.1:1313/" target="_blank" rel="noopener">本地预览 ↗</a><a href="https://github.com/paipaiio/paipaiio.github.io" target="_blank" rel="noopener">代码仓库 ↗</a></div></header>
+<div class="shell">
+<aside class="sidebar" aria-label="目录"><nav>
+<div class="nav-label">Start here</div><a href="#overview" class="active">项目与日常流程</a><a href="#environment">环境与首次准备</a><a href="#preview">本地预览</a>
+<div class="nav-label">Write</div><a href="#new-post">新建文章</a><a href="#generator">文章信息生成器</a><a href="#frontmatter">文章参数说明</a><a href="#markdown">正文与图片写法</a>
+<div class="nav-label">Configure</div><a href="#config">站点参数预览</a><a href="#config-map">配置放在哪</a><a href="#comments">评论与扩展功能</a>
+<div class="nav-label">Publish</div><a href="#release-checklist">发布前检查</a><a href="#publish">提交与发布</a><a href="#pages">Pages 与域名</a><a href="#help">常见问题</a><a href="#structure">项目结构</a>
+</nav><div class="meta">最后核对：2026-10-08<br>依据本项目源文件编写<br>Hugo 0.156.0 extended<br>CI：Node.js 22<br>无外部脚本 / 单文件 HTML</div></aside>
+<main>
+<nav class="tabs" aria-label="手册分类" role="tablist"><button type="button" id="tab-overview" role="tab" data-tab="overview-panel" aria-controls="overview-panel" aria-selected="true">总览</button><button type="button" id="tab-setup" role="tab" data-tab="setup-panel" aria-controls="setup-panel" aria-selected="false">准备与预览</button><button type="button" id="tab-write" role="tab" data-tab="write-panel" aria-controls="write-panel" aria-selected="false">写文章</button><button type="button" id="tab-config" role="tab" data-tab="config-panel" aria-controls="config-panel" aria-selected="false">改配置</button><button type="button" id="tab-publish" role="tab" data-tab="publish-panel" aria-controls="publish-panel" aria-selected="false">发文章</button><button type="button" id="tab-help" role="tab" data-tab="help-panel" aria-controls="help-panel" aria-selected="false">排查与结构</button></nav>
+<div id="overview-panel" class="panel" role="tabpanel" aria-labelledby="tab-overview">
+<div class="section-heading">Everyday workflow</div><h1 id="overview">写作留在本地，发布交给构建。</h1><p class="lead">这是 <strong>Hugo + PaperMod</strong> 静态博客。平时编辑文章 Markdown 和站点源码；推送到 <code>main</code> 后，GitHub Actions 负责测试、生成页面与发布。这里的 Markdown 是文章正文，技术使用说明保留为这份交互 HTML。</p>
+<div class="flow"><a href="#new-post"><strong>01 · 创建草稿</strong><small>一篇文章，一个目录</small></a><a href="#markdown"><strong>02 · 写作与预览</strong><small>文字、图片与代码</small></a><a href="#release-checklist"><strong>03 · 正式构建检查</strong><small>关闭草稿，确认内容</small></a><a href="#publish"><strong>04 · 提交并推送</strong><small>检查 Actions 与线上页面</small></a></div>
+<section><h2>先记住这三个位置</h2><div class="table-wrap"><table><thead><tr><th>要做的事</th><th>编辑哪里</th><th>说明</th></tr></thead><tbody><tr><td>写 / 改 / 删文章</td><td><code>content/posts/文章目录/index.md</code></td><td>图片与文章放同一目录，正文用 Markdown。</td></tr><tr><td>改名字、菜单、阅读功能</td><td><code>hugo.toml</code></td><td>每个 TOML 表的层级要正确；下方有可复制示例。</td></tr><tr><td>美化布局与样式</td><td><code>assets/css/extended/custom.css</code>、<code>layouts/</code></td><td>优先在项目级覆写，不直接修改主题子模块。</td></tr></tbody></table></div>
+<div class="note warning"><strong>本项目的注意点：</strong><code>public/</code> 有历史上已被 Git 跟踪的产物。<code>.gitignore</code> 只挡新文件，不会自动取消跟踪。用本手册的独立输出目录构建，只添加要发布的源码；不要整仓 <code>git add .</code>。</div><p>手册中的提交与推送命令供你准备好后执行。生成预览、勾选清单或复制命令，都不会替你提交、推送或改线上配置。</p></section>
+<section><h2>仓库与站点</h2><p>源仓库：<a href="https://github.com/paipaiio/paipaiio.github.io">paipaiio/paipaiio.github.io</a>；工作流触发分支：<code>main</code>。当前配置中的站点地址是 <a href="https://blog.paipaiio.com">blog.paipaiio.com</a>；这是配置值，不代表手册确认了此次改动已上线。</p><div class="codeblock"><div class="codebar"><span>已核对的 origin</span><button type="button" data-copy="remote-output">复制</button></div><pre id="remote-output">git@github.com:paipaiio/paipaiio.github.io.git</pre></div></section>
+<div class="step-nav"><span></span><a href="#environment">下一步：准备与预览 →</a></div></div>
+<div id="setup-panel" class="panel" role="tabpanel" aria-labelledby="tab-setup" hidden>
+<div class="section-heading">Local setup</div><h1>先准备环境，再看实时预览。</h1><p class="lead">已有环境时直接核对版本；只有缺少工具时才安装。项目没有 <code>package.json</code>，没有 <code>npm install</code> 步骤。</p>
+<section id="environment"><h2>01 · 环境与主题</h2><p><span class="tag">Hugo 0.156.0 extended</span><span class="tag">Node.js 22</span><span class="tag">Git</span>与 <code>.github/workflows/hugo.yml</code> 保持一致，减少“本机通过、CI 失败”的差异。Hugo 的 extended/deploy 版本也包含所需 extended 功能；项目不需要本机执行云 deploy。</p><div class="codeblock"><div class="codebar"><span>在项目根目录 /Volumes/Pi/blog</span><button type="button" data-copy="setup-command">复制</button></div><pre id="setup-command">cd /Volumes/Pi/blog
+hugo version
+node --version
+git status --short
+git submodule update --init --recursive</pre></div><p class="small muted">Hugo 输出应包含 <code>v0.156.0</code> 与 <code>extended</code>；Node 输出应为 <code>v22.x.x</code>。本次检查的本机默认 Node 是 <code>v26.8.1</code>，CI 固定 22。首次克隆时 PaperMod 通过 Git 子模块恢复；已有主题时无需重新下载其他模板。</p>
+<details id="installation"><summary>还没安装工具？查看手动安装选择</summary><p>版本固定优先：从 <a href="https://github.com/gohugoio/hugo/releases/tag/v0.156.0" target="_blank" rel="noopener">Hugo 0.156.0 官方发布页</a>选择系统对应的 <code>extended</code> 归档，按<a href="https://gohugo.io/installation/macos/" target="_blank" rel="noopener">官方 macOS 安装说明</a>解压并加入 PATH，再验证版本。若使用 Homebrew，<code>brew install hugo</code> 安装的是其当前版本，不保证恰好 0.156.0；已有正确版本请保留。手册未替你安装或升级任何系统工具。</p><p>Node 可从 <a href="https://nodejs.org/en/download" target="_blank" rel="noopener">Node.js 官方下载页</a>选择 22.x。已有 Homebrew 时，也可用以下命令安装并仅切换当前终端 PATH，不做全局 relink：</p><div class="codeblock"><div class="codebar"><span>可选 · 缺少 Node 22 时才执行</span><button type="button" data-copy="node-command">复制</button></div><pre id="node-command">brew install node@22
+export PATH="$(brew --prefix node@22)/bin:$PATH"
+node --version</pre></div></details></section>
+<section id="preview"><h2>02 · 本地预览</h2><p>当前任务的预览地址是 <a href="http://127.0.0.1:1313/">http://127.0.0.1:1313/</a>。<strong>1313 已运行时直接打开并刷新，不要重复启动。</strong>写作预览包含草稿 <code>-D</code>；但首页近期文章只展示已发布且有正文的文章。新草稿请在 <code>/posts/</code> 列表点击或直接访问 <code>/posts/你的-slug/</code>，不是创建失败。修改内容通常实时刷新。配置和布局发生变化后，如有异常，可在启动终端 <kbd>Ctrl</kbd> + <kbd>C</kbd> 再启动。</p><div class="codeblock"><div class="codebar"><span>新终端会话 · 只在预览服务未运行时执行</span><button type="button" data-copy="preview-command">复制</button></div><pre id="preview-command">cd /Volumes/Pi/blog
+PREVIEW_DIR=$(mktemp -d "${TMPDIR:-/tmp}/blog-preview.XXXXXX")
+HUGO_RESOURCEDIR="$PREVIEW_DIR/resources" \
+  hugo server -D --renderToMemory --noBuildLock --disableFastRender \
+  --cacheDir "$PREVIEW_DIR/cache" --port 1313
+# 按 Ctrl+C 结束服务后，清理本会话的临时目录：
+rm -rf -- "$PREVIEW_DIR"</pre></div><div class="note"><code>--renderToMemory</code> 不写 <code>public/</code>；资源与缓存也位于临时目录。服务只在本机运行，端口占用时先确认已有博客服务。不要结束不相关的进程。</div><p>临时目录会一直保留到服务结束；最后一行只清理本条命令创建的目录。日常写作使用上面完整命令，正式发布则用“发文章”里的不带 <code>-D</code> 构建。</p></section>
+<div class="step-nav"><a href="#overview">← 总览</a><a href="#new-post">下一步：写文章 →</a></div></div>
+<div id="write-panel" class="panel" role="tabpanel" aria-labelledby="tab-write" hidden>
+<div class="section-heading">Writing</div><h1>标题可以是中文，目录名尽量稳定。</h1><p class="lead">建议把每篇文章做成 Page Bundle：一个目录里有 <code>index.md</code> 和这篇文章的图片。文章目录名使用小写英文、数字、连字符，例如 <code>my-first-post</code>。</p>
+<section id="new-post"><h2>01 · 新建文章</h2><div class="codeblock"><div class="codebar"><span>会生成 content/posts/my-first-post/index.md</span><button type="button" data-copy="new-command">复制</button></div><pre id="new-command">cd /Volumes/Pi/blog
+hugo new content --kind posts posts/my-first-post/index.md</pre></div><p>命令使用本项目的 <code>archetypes/posts.md</code>，默认 <code>draft: true</code>、<code>math: false</code>。打开新文件后修改标题、日期与摘要，再写正文。相同目录只新建一次；已有文件直接编辑，换篇文章时换一个唯一目录名。文章作者未单独指定时继承 <code>params.author</code>。</p><p>在 <a href="#generator">下方生成器</a>填写元信息，复制“创建命令”在终端执行，再把“文章模板”粘贴到新生成的 <code>index.md</code>。不要把整段 Markdown 粘贴到终端。</p></section>
+<section id="generator"><h2>02 · 文章信息生成器</h2><p>这里仅生成文本，不写文件、不执行命令。<strong>生成前默认保留草稿</strong>；预览满意且准备发布时再取消草稿。标题、摘要支持中文和引号，输出自动处理 YAML 转义。</p><div class="editor"><form id="article-form"><div class="form-grid">
+<label>文章标题<input id="post-title" type="text" value="我的第一篇文章" required maxlength="200"></label><label>稳定目录名 / slug<input id="post-slug" type="text" value="my-first-post" required maxlength="80" pattern="[a-z0-9]+(-[a-z0-9]+)*" aria-describedby="slug-help"></label>
+<label>日期 · Asia/Shanghai / +08:00<input id="post-date" type="datetime-local" value="2026-10-08T14:10" required></label><label>标签 · 用逗号分隔<input id="post-tags" type="text" value="Hugo, 写作"></label>
+<label>分类 · 用逗号分隔<input id="post-categories" type="text" value="技术笔记"></label><label>封面 · 同目录文件名，可留空<input id="post-cover" type="text" placeholder="cover.jpg" value=""></label><label class="full">摘要 · 1–2 句话<textarea id="post-summary">记录从本地草稿到博客发布的完整过程。</textarea></label></div><p id="slug-help" class="small muted">slug 限 1–80 个小写 ASCII 字母、数字和单连字符，不允许路径、空格、中文或 shell 字符。中文标题独立保留；更改已发布 slug 会改变文章地址。</p><div class="checks"><label><input id="post-draft" type="checkbox" checked>草稿 draft</label><label><input id="post-comments" type="checkbox" checked>评论 comments</label><label><input id="post-math" type="checkbox">数学 math</label></div><button id="generate-post" class="primary" type="submit">生成 / 更新模板</button></form><p id="form-status" class="status" role="status" aria-live="polite"></p><p class="output-caption">第一步 · 创建命令（独立于中文标题生成）</p><div class="codeblock"><div class="codebar"><span>Shell</span><button type="button" data-copy="command-output">复制创建命令</button></div><pre id="command-output"></pre></div><p class="output-caption">第二步 · 粘贴到新建的 index.md 后再写正文</p><div class="codeblock"><div class="codebar"><span>YAML Front Matter + Markdown</span><button type="button" data-copy="frontmatter-output">复制文章模板</button></div><pre id="frontmatter-output"></pre></div></div></section>
+<section id="frontmatter"><h2>03 · 文章参数怎么填</h2><p>文件开头用两个 <code>---</code> 包住 YAML Front Matter。冒号后有空格，嵌套字段用两个空格缩进。不要混用 <code>+++</code> TOML 语法与 YAML 键值。</p><div class="table-wrap"><table><thead><tr><th>字段</th><th>建议值 / 作用</th><th>发布时留意</th></tr></thead><tbody><tr><td><code>title</code></td><td>文章显示标题，可以中文。</td><td>标题变更不必改目录名。</td></tr><tr><td><code>slug</code></td><td>生成器给出稳定英文 URL 段；模板本身可由目录名决定。</td><td>发布后尽量不改，旧链接可能失效。</td></tr><tr><td><code>date</code></td><td><code>2026-10-08T14:10:00+08:00</code></td><td>填写实际发文时间。未来时间正式构建默认不输出；当前流程不是自动定时发布。</td></tr><tr><td><code>draft</code></td><td>写作 <code>true</code>，发布 <code>false</code>。</td><td><code>-D</code> 预览可见草稿；正式构建没有 <code>-D</code>。</td></tr><tr><td><code>summary</code></td><td>1–2 句列表摘要；留空时 Hugo 按正文生成摘要。</td><td>内容具体，避免只有空标题。</td></tr><tr><td><code>tags</code> / <code>categories</code></td><td>YAML 列表，如 <code>["Hugo", "写作"]</code>。</td><td>标签用于多维检索，分类用于主题归档；已有同名项复用。</td></tr><tr><td><code>author</code></td><td>默认省略，继承站点 <code>MuskZhou</code>。</td><td>确需不同作者时加 <code>author: "名字"</code>。</td></tr><tr><td><code>cover.image</code> / <code>cover.relative</code></td><td>同目录 <code>cover.jpg</code> 与 <code>true</code>，或 image 留空不设封面。</td><td>文件存在、大小写一致。列表封面是否显示由站点配置控制。</td></tr><tr><td><code>comments</code></td><td>新模板 <code>true</code>；省略时继承全站评论配置。</td><td>本篇设 <code>false</code> 可以关闭，正式站点需正确配置 giscus。</td></tr><tr><td><code>math</code></td><td>新模板 <code>false</code>；有公式的文章才设 <code>true</code>。</td><td>本篇关闭数学，避免价格中的美元符号被当成公式；旧文章仍依其自身/站点参数。</td></tr></tbody></table></div></section>
+<section id="markdown"><h2>04 · 正文、图片、图表和提示</h2><h3>普通写法</h3><p>文章标题已由 <code>title</code> 显示，正文从 <code>##</code> 二级标题开始。代码块语言标识决定高亮；用正文链接为图片与参考资料注明来源。</p><div class="codeblock"><div class="codebar"><span>Markdown · 可复制后修改</span><button type="button" data-copy="markdown-example">复制</button></div><pre id="markdown-example">## 背景
+
+先讲清楚要解决的问题，以及适合什么读者。
+
+## 实践步骤
+
+1. 准备环境。
+2. 执行命令。
+3. 验证输出。
+
+**重点结论**，以及 `行内代码`。
+
+```bash
+hugo version
+```
+
+| 项目 | 说明 |
+| --- | --- |
+| 环境 | Hugo 0.156.0 extended |
+
+[Hugo 文档](https://gohugo.io/documentation/)
+
+![本地预览截图](image.png)
+
+## 总结
+
+结果、限制与下一步。</pre></div><h3>Page Bundle 图片</h3><p>把 <code>image.png</code> 与 <code>cover.jpg</code> 放进 <code>content/posts/my-first-post/</code>。正文用 <code>![清晰说明](image.png)</code>，封面在 Front Matter 的 <code>cover:</code> 下设置 <code>image: "cover.jpg"</code> 与 <code>relative: true</code>；<code>alt</code> 可填图片说明。避开本机绝对路径与编辑器专属图片链接。</p><div class="codeblock"><div class="codebar"><span>目录示例 · 不是终端命令</span><button type="button" data-copy="bundle-example">复制</button></div><pre id="bundle-example">content/posts/my-first-post/
+├── index.md
+├── image.png
+└── cover.jpg</pre></div>
+<details id="advanced-writing"><summary>扩展写法：Mermaid、数学公式与提示块</summary><p>本项目已有 Mermaid 和提示块渲染 hook；Mermaid 与 KaTeX 通过 CDN 加载，离线环境或网络拦截时图表 / 公式可能不渲染。公式文章记得把本篇 <code>math</code> 设为 <code>true</code>。</p><div class="codeblock"><div class="codebar"><span>Markdown · 当前项目支持</span><button type="button" data-copy="extended-example">复制</button></div><pre id="extended-example">```mermaid
+flowchart LR
+    A[写草稿] --&gt; B[本地预览]
+    B --&gt; C[正式构建]
+    C --&gt; D[推送发布]
+```
+
+行内公式：\(E = mc^2\)
+
+$$
+\sum_{i=1}^{n} i = \frac{n(n+1)}{2}
+$$
+
+&gt; [!NOTE]
+&gt; 这是一条补充说明。
+
+&gt; [!TIP]
+&gt; 将文章和图片放在同一目录。
+
+&gt; [!WARNING]
+&gt; 发布前检查是否包含账号信息或私密截图。</pre></div></details></section>
+<div class="step-nav"><a href="#preview">← 准备与预览</a><a href="#config">下一步：改配置 →</a></div></div>
+<div id="config-panel" class="panel" role="tabpanel" aria-labelledby="tab-config" hidden>
+<div class="section-heading">Site configuration</div><h1>先分清全站配置与单篇参数。</h1><p class="lead">全站默认值在 <code>hugo.toml</code>。文章开头的同名参数能覆盖部分全站设置。下面的预览只生成片段，不会自动写配置文件。</p>
+<section id="config"><h2>01 · 站点参数实时预览</h2><div class="editor"><div class="param-layout"><form id="config-form"><div class="form-grid"><label>站点标题<input id="config-title" type="text" value="paipai’s blog"></label><label>baseURL · 正式站点地址<input id="config-baseurl" type="url" value="https://blog.paipaiio.com/"></label><label>默认明暗模式 defaultTheme<select id="config-theme"><option value="auto">auto · 跟随系统</option><option value="light">light · 浅色</option><option value="dark">dark · 深色</option></select></label><label>每页文章数 pagerSize<input id="config-pager" type="number" min="1" max="50" value="10"></label></div><div class="checks"><label><input id="config-copy" type="checkbox" checked>代码复制</label><label><input id="config-reading" type="checkbox" checked>阅读时间</label><label><input id="config-comments" type="checkbox" checked>全站评论</label></div><p class="small muted">主题名称固定 PaperMod；主题模式改变不等于更换主题。预览片段应合并到现有对应表，避免重复定义 <code>[params]</code>。</p></form><div class="codeblock"><div class="codebar"><span>TOML · 合并示例，不是完整配置</span><button type="button" data-copy="config-output">复制参数</button></div><pre id="config-output"></pre></div></div><p id="config-status" class="status" role="status"></p></div></section>
+<section id="config-map"><h2>02 · 配置放在哪</h2><p>TOML 从表标题开始，后续字段都属于这个表，直到下一个表标题。<strong>阅读、代码复制、明暗模式都放在 <code>[params]</code>，不是 <code>[params.cover]</code> 里面。</strong>把新增字段合并到已有表；一份文件不要重复声明同一表。</p><div class="table-wrap"><table><thead><tr><th>要改什么</th><th>所在层级</th><th>典型键</th></tr></thead><tbody><tr><td>网站地址 / 标题 / 主题</td><td>文件顶层</td><td><code>baseURL</code>、<code>title</code>、<code>theme = "PaperMod"</code></td></tr><tr><td>分页</td><td><code>[pagination]</code></td><td><code>pagerSize = 10</code></td></tr><tr><td>阅读、代码复制、目录、评论</td><td><code>[params]</code></td><td><code>ShowReadingTime</code>、<code>ShowCodeCopyButtons</code>、<code>ShowToc</code>、<code>comments</code></td></tr><tr><td>封面显示</td><td><code>[params.cover]</code></td><td><code>hiddenInList</code>、<code>hiddenInSingle</code>、<code>relative</code>（本篇在 Front Matter 填）</td></tr><tr><td>首页简介 / 按钮</td><td><code>[params.profileMode]</code> 与 <code>[[params.profileMode.buttons]]</code></td><td><code>title</code>、<code>subtitle</code>、<code>imageUrl</code>，按钮的 <code>name</code> / <code>url</code></td></tr><tr><td>顶部菜单 / 社交链接</td><td><code>[[menu.main]]</code> / <code>[[params.socialIcons]]</code></td><td><code>name</code>、<code>url</code>、菜单 <code>weight</code></td></tr><tr><td>评论服务</td><td><code>[params.giscus]</code></td><td><code>repo</code>、<code>repoId</code>、<code>categoryId</code></td></tr><tr><td>搜索数据</td><td><code>[outputs]</code> / <code>[params.fuseOpts]</code></td><td>首页输出需保留 <code>"JSON"</code>，搜索页面在 <code>content/search/_index.md</code>。</td></tr><tr><td>分类与标签</td><td><code>[taxonomies]</code></td><td><code>tag = "tags"</code>、<code>category = "categories"</code></td></tr></tbody></table></div><div class="codeblock"><div class="codebar"><span>层级示例 · 合并到对应表</span><button type="button" data-copy="param-example">复制</button></div><pre id="param-example">[params]
+ShowCodeCopyButtons = true
+ShowReadingTime = true
+ShowToc = true
+defaultTheme = "auto"
+comments = true
+
+[params.cover]
+hidden = false
+hiddenInList = true
+hiddenInSingle = false</pre></div><p>修改 <code>baseURL</code> 不会替你注册域名或改变 DNS；新值应与实际 Pages 自定义域名一致。首页文案与菜单在项目配置中编辑，头像文件是 <code>static/img/avatar.png</code>。</p></section>
+<section id="comments"><h2>03 · 评论与扩展功能</h2><p>评论使用 giscus（GitHub Discussions），当前连接 <code>paipaiio/paipaiio.github.io</code>。更换仓库时，在 <a href="https://giscus.app/zh-CN" target="_blank" rel="noopener">giscus 配置页</a>重新选择仓库与分类，再把生成的仓库 / 分类 ID 写入 <code>[params.giscus]</code>。不要只改 <code>repo</code> 而沿用旧 ID。</p><p><code>repoId</code> 与 <code>categoryId</code> 是浏览器使用的公开标识，不是 API 密钥；私人 Token、密码与 API Key 不应写入文章、<code>hugo.toml</code> 或这份 HTML。全站 <code>comments = false</code> 关闭默认评论，本篇 <code>comments: false</code> 只影响这一篇。</p><p>数学扩展由 <code>layouts/partials/math.html</code> 渲染，Markdown 源码保留规则在 <code>[markup.goldmark.extensions.passthrough]</code>。Mermaid 来自代码块 hook 与 <code>layouts/partials/mermaid.html</code>。新文章默认数学关闭，公式文章显式开启即可。</p></section>
+<div class="step-nav"><a href="#new-post">← 写文章</a><a href="#release-checklist">下一步：检查与发布 →</a></div></div>
+<div id="publish-panel" class="panel" role="tabpanel" aria-labelledby="tab-publish" hidden>
+<div class="section-heading">Publishing</div><h1>先通过正式构建，再推送 main。</h1><p class="lead">本地预览不是线上发布。正式构建不包含草稿，也默认排除未来文章。以下流程从内容检查到线上确认逐步执行。</p>
+<section id="release-checklist"><h2>01 · 发布前检查清单</h2><p class="small muted">清单保存在此浏览器的本地存储；首次打开默认未勾选。不影响 Git 或线上内容。</p><ul class="checklist" id="publish-checklist"><li><label><input type="checkbox" data-check="body"><span>文章有完整正文，标题、摘要、标签与分类符合内容。</span></label></li><li><label><input type="checkbox" data-check="draft"><span>准备公开的文章已设 <code>draft: false</code>，日期不是未来时间。</span></label></li><li><label><input type="checkbox" data-check="media"><span>图片在文章目录中，链接和大小写正确，无私人截图、Token、密码。</span></label></li><li><label><input type="checkbox" data-check="preview"><span>本地检查文章页、手机宽度、代码复制、搜索和需要的图表 / 公式。</span></label></li><li><label><input type="checkbox" data-check="build"><span>回归测试通过；不带 <code>-D</code> 的正式构建通过，文章出现在正式输出中。</span></label></li><li><label><input type="checkbox" data-check="staged"><span>核对暂存区，只包含此次要发布的内容与相关源码，不包含 <code>public/</code> 或 <code>resources/</code>。</span></label></li></ul><progress id="check-progress" value="0" max="6" aria-label="发布清单完成进度"></progress><p id="check-status" class="status" role="status">0 / 6 项完成</p><button type="button" id="reset-checklist">重置清单</button>
+<h3>测试与独立目录正式构建</h3><div class="codeblock"><div class="codebar"><span>不写 public / resources · 不带 -D</span><button type="button" data-copy="build-command">复制</button></div><pre id="build-command">cd /Volumes/Pi/blog
+./scripts/test.sh
+BUILD_DIR=$(mktemp -d "${TMPDIR:-/tmp}/blog-release.XXXXXX")
+HUGO_RESOURCEDIR="$BUILD_DIR/resources" \
+  hugo --minify --noBuildLock --cacheDir "$BUILD_DIR/cache" \
+  --destination "$BUILD_DIR/site" --cleanDestinationDir
+printf '正式输出目录：%s\n' "$BUILD_DIR/site"
+# 首篇例子：根据你的实际 slug 调整并查看是否存在。
+test -f "$BUILD_DIR/site/posts/my-first-post/index.html"
+# 检查完输出后再清理：
+rm -rf -- "$BUILD_DIR"</pre></div><p class="small muted">依次执行并确认每一步退出成功，再进行提交。<code>my-first-post</code> 是示例，新文章是草稿时这个检查预期不通过；发布前先在文件中设 <code>draft: false</code>。测试内置隔离构建；不需要先生成 <code>public/</code>。若命令失败，先处理错误，别继续推送。</p></section>
+<section id="publish"><h2>02 · 逐项暂存、提交与推送</h2><p>先看当前分支与已有改动。<strong>仅在确认当前分支是 <code>main</code>，且暂存内容正是此次发布内容后</strong>执行提交与推送。工作流目前只有 <code>push: main</code> 触发，没有手动 dispatch 入口。</p><div class="codeblock"><div class="codebar"><span>每次发文 · 换成自己的文章目录</span><button type="button" data-copy="publish-command">复制</button></div><pre id="publish-command">cd /Volumes/Pi/blog
+git branch --show-current
+git status --short
+git diff --stat
+
+# 指定本次文章，连同目录里的配图一起暂存：
+git add -- content/posts/my-first-post
+
+# 查看全部已暂存文件和实际差异：
+git diff --cached --stat
+git diff --cached --check
+git diff --cached
+
+# 内容确认完成、当前分支确实是 main 后执行：
+git commit -m "docs: publish my first post"
+git push origin main</pre></div><div class="note warning">暂存区可能已有别人的 / 以前的改动，<code>git commit</code> 会提交整个暂存区。先逐项核对。若误暂存产物，可用 <code>git restore --staged -- public resources</code> 仅撤出暂存，不删除工作文件。不要把 <code>git add .</code> 当作日常发布捷径。</div>
+<details id="first-source-commit"><summary>本轮首次提交：把新设计、指南与模板一并纳入源码</summary><p>这一轮美化和修复涉及配置、布局、CSS、测试与新增指南 / 文章模板；你决定发布这些修改时，可按下面范围暂存源码。先确认差异与现有文章改动，再挑选文件；这个例子不含构建产物。</p><div class="codeblock"><div class="codebar"><span>首次提交本轮源码 · 执行前核对路径内差异</span><button type="button" data-copy="source-add-command">复制</button></div><pre id="source-add-command">git status --short
+git diff --stat
+git add -- hugo.toml assets layouts archetypes scripts tests README.html
+git diff --cached --stat
+git diff --cached --check
+git diff --cached</pre></div><p>“自动识别快递盒”空文章本轮删除的是未被 Git 跟踪的本地稿件，因此远端没有对应删除记录需要提交。若你后来要删一篇已跟踪文章，删除后用 <code>git add -u -- content/posts/那篇文章目录</code> 暂存该目录的删除；其他已有未提交文章只在你确认需要发布时添加。</p></details>
+<h3>推送后看哪里</h3><ol><li>打开 <a href="https://github.com/paipaiio/paipaiio.github.io/actions" target="_blank" rel="noopener">仓库 Actions</a>，找到这次 commit 的 <strong>Deploy Hugo site to GitHub Pages</strong>。</li><li>等待 <code>build</code>（测试 + Hugo）和 <code>deploy</code> 都通过。失败时打开对应步骤日志。</li><li>到仓库 <a href="https://github.com/paipaiio/paipaiio.github.io/settings/pages" target="_blank" rel="noopener">Settings → Pages</a> 查看实际已发布地址，再核对线上首页、文章、图片和搜索。</li></ol><p>目前工作流使用 Hugo 0.156.0 extended、Node 22，输出到 runner 临时目录 <code>hugo-public</code>，再上传 Pages artifact。<code>public/</code> 里的历史页面不作为本工作流发布输入。</p></section>
+<section id="pages"><h2>03 · 首次配置 Pages 与域名</h2><p>按 <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site" target="_blank" rel="noopener">GitHub 官方发布源说明</a>，本项目对应设置为 <strong>Settings → Pages → Build and deployment → Source → GitHub Actions</strong>；仓库已有工作流，无需再建立重复模板。</p><p>使用当前 <code>blog.paipaiio.com</code> 时，先在 Pages 的 <strong>Custom domain</strong> 填该域名并保存，再在 DNS 服务商配置下方记录。<a href="https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site" target="_blank" rel="noopener">GitHub 自定义域名官方文档</a>说明：子域名 CNAME 指向用户域名，不附仓库路径；自定义 Actions 发布不依赖源码 <code>CNAME</code> 文件。</p><div class="codeblock"><div class="codebar"><span>DNS 记录 · 在 DNS 服务商控制台填写，不是 Shell</span><button type="button" data-copy="dns-example">复制</button></div><pre id="dns-example">记录类型：CNAME
+主机记录：blog
+目标：paipaiio.github.io
+完整域名：blog.paipaiio.com</pre></div><p>HTTPS 选项出现后启用 <strong>Enforce HTTPS</strong>。域名验证、DNS 传播与证书签发需要时间；核对实际 Pages 页面状态后再判断上线。本站不用根域名 A 记录，若改成根域名，请按官方文档配置，不照搬子域名记录。</p><div class="codeblock"><div class="codebar"><span>可选 · 只读核对 DNS</span><button type="button" data-copy="dns-command">复制</button></div><pre id="dns-command">dig blog.paipaiio.com CNAME +short</pre></div></section>
+<div class="step-nav"><a href="#config">← 改配置</a><a href="#help">排查与项目结构 →</a></div></div>
+<div id="help-panel" class="panel" role="tabpanel" aria-labelledby="tab-help" hidden>
+<div class="section-heading">Reference</div><h1>找不到文章时，先看草稿和日期。</h1>
+<section id="help"><h2>常见问题</h2><div class="table-wrap"><table><thead><tr><th>现象</th><th>优先检查</th></tr></thead><tbody><tr><td>本地看得到，线上没有新文章</td><td><code>draft: false</code>、日期不在未来、当前文章已提交并推到 <code>main</code>、Actions build/deploy 全通过。</td></tr><tr><td>新文章打不开 / 新建失败</td><td>命令加 <code>--kind posts</code>；已存在文件不要重新创建；YAML 用 <code>---</code> 且冒号后有空格。</td></tr><tr><td>预览端口占用</td><td>直接打开已运行的 <code>127.0.0.1:1313</code>；确需重启时在原启动终端结束自己的服务。</td></tr><tr><td>主题丢失、clone 后页面异常</td><td>执行 <code>git submodule update --init --recursive</code>，检查 <code>themes/PaperMod/</code> 非空。</td></tr><tr><td>封面或正文图片不显示</td><td>图片位于同一 Page Bundle；路径与大小写吻合；封面设 <code>relative: true</code>。Linux CI 区分文件名大小写。</td></tr><tr><td>复制按钮 / 阅读时间配置没生效</td><td>参数放在 <code>[params]</code> 下，而非 cover 表里；配置修改后检查服务重载。</td></tr><tr><td>金额被当成数学公式</td><td>本篇设置 <code>math: false</code>；确实需要公式时优先使用 <code>\( ... \)</code>。</td></tr><tr><td>评论空白、图表或公式没渲染</td><td>检查联网 / CDN，浏览器控制台错误；评论还需仓库 Discussions 与 giscus 配置正确。</td></tr><tr><td>搜索没有文章</td><td><code>[outputs]</code> 的 home 含 <code>JSON</code>；文章已发布；预览刷新后再查索引。</td></tr><tr><td>git push 失败</td><td>查看错误信息、远端访问与 SSH 配置。远端已有新提交时先处理差异；别用强制推送覆盖。</td></tr></tbody></table></div><p>检查错误先使用只读命令，确认哪些改动是你自己的，再决定如何调整；不需要为了文章发布重装主题或清空整个输出仓库。</p></section>
+<section id="structure"><h2>项目结构速查</h2><div class="codeblock"><div class="codebar"><span>已核对的关键源码路径</span><button type="button" data-copy="structure-output">复制</button></div><pre id="structure-output">blog/
+├── README.html                      # 此使用手册，独立交互 HTML
+├── hugo.toml                        # 全站配置
+├── archetypes/
+│   ├── default.md                   # 非 posts 的默认模板
+│   └── posts.md                     # 新文章模板，默认草稿 / math false
+├── content/
+│   ├── posts/                       # 文章与 Page Bundle 配图
+│   ├── about/                       # 关于页
+│   ├── archives/                    # 归档
+│   ├── search/                      # 搜索页面
+│   ├── now/                         # 近期活动
+│   └── projects/                    # 小项目页
+├── assets/
+│   ├── css/extended/custom.css       # 站点级样式
+│   └── js/fastsearch.js              # 搜索交互
+├── layouts/                         # 项目级模板、渲染 hook 与 partial
+├── static/img/avatar.png            # 首页头像
+├── themes/PaperMod/                 # Git 子模块，不直接改主题
+├── scripts/test.sh                  # 测试入口（Node 内置 test runner）
+├── tests/                           # 构建与交互回归测试
+├── .github/workflows/hugo.yml        # push main 后构建 / Pages 发布
+├── public/                          # 历史生成物；日常流程不写不暂存
+└── resources/                       # 生成资源；隔离到临时目录</pre></div><p>数据流：<code>content + hugo.toml + assets + layouts + PaperMod → Hugo → 临时 site 目录 → Pages artifact → deploy</code>。技术文档无需挂到 <code>content/posts/</code>，<code>README.html</code> 是仓库使用手册，不会自动变成一篇博客文章。</p></section>
+<div class="step-nav"><a href="#publish">← 发文章</a><a href="#overview">回到总览 ↑</a></div></div>
+<footer class="footer">最后更新：2026-10-08 · 源依据：hugo.toml、archetypes、layouts、scripts/test.sh、tests、.github/workflows/hugo.yml 与 Git origin。<br>新稿用 Markdown，项目技术说明用 HTML。配置预览是片段，发布命令需要你确认后执行。</footer>
+</main></div><div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+<script>
+(() => {
+'use strict';
+const q = value => JSON.stringify(String(value ?? ''));
+const list = value => Array.isArray(value) ? value.map(String).map(s => s.trim()).filter(Boolean) : String(value ?? '').split(/[,，]/).map(s => s.trim()).filter(Boolean);
+const bool = (value, fallback) => typeof value === 'boolean' ? value : fallback;
+function generateArticle(values = {}) {
+  if (!values || typeof values !== 'object' || Array.isArray(values)) return {valid:false,error:'请填写文章信息。'};
+  const title = String(values.title ?? '').trim();
+  const slug = String(values.slug ?? '');
+  if (!title) return {valid:false,error:'请填写文章标题。'};
+  if (title.length > 200) return {valid:false,error:'标题请控制在 200 个字符以内。'};
+  if (slug.length > 80 || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)) return {valid:false,error:'slug 仅接受小写英文、数字与单连字符；长度 1–80，不接受路径或 shell 字符。'};
+  const date = String(values.date ?? '2026-10-08T14:10');
+  const match = date.match(/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})$/);
+  if (!match) return {valid:false,error:'日期格式应为 YYYY-MM-DDTHH:mm，时区固定 +08:00。'};
+  const [, y, m, d, h, minute] = match.map(Number);
+  const calendar = new Date(Date.UTC(y,m-1,d,h,minute));
+  if (y < 1970 || y > 9999 || calendar.getUTCFullYear() !== y || calendar.getUTCMonth() !== m-1 || calendar.getUTCDate() !== d || h > 23 || minute > 59) return {valid:false,error:'请填写有效的年月日和时间。'};
+  const path = `content/posts/${slug}/index.md`;
+  const cover = String(values.cover ?? '').trim();
+  const content = [
+    '---', `title: ${q(title)}`, `slug: ${q(slug)}`, `date: ${q(date + ':00+08:00')}`,
+    `draft: ${bool(values.draft,true)}`, `summary: ${q(values.summary ?? '')}`,
+    `tags: ${JSON.stringify(list(values.tags))}`, `categories: ${JSON.stringify(list(values.categories))}`,
+    `comments: ${bool(values.comments,true)}`, `math: ${bool(values.math,false)}`, '', 'cover:', `  image: ${q(cover)}`, '  alt: ""', '  relative: true', '---', '',
+    '## 背景', '', '写下要解决的问题，以及读者需要知道的背景。', '', '## 正文', '',
+    '按步骤说明过程。需要图片时，将图片放在本文章目录，然后使用 `![图片说明](image.png)`。', '', '## 总结', '', '记录结论、限制和下一步。', ''
+  ].join('\n');
+  return {valid:true,path,command:`hugo new content --kind posts posts/${slug}/index.md`,content};
+}
+function generateConfig(values = {}) {
+  if (!values || typeof values !== 'object' || Array.isArray(values)) return {valid:false,error:'请填写站点参数。'};
+  let base;
+  try { base = new URL(String(values.baseURL ?? 'https://blog.paipaiio.com/')); } catch { return {valid:false,error:'baseURL 需要完整的 http:// 或 https:// 地址。'}; }
+  if (!['http:','https:'].includes(base.protocol) || base.username || base.password || base.search || base.hash) return {valid:false,error:'baseURL 请使用无密码、查询参数或 hash 的 HTTP(S) 站点地址。'};
+  const mode = String(values.defaultTheme ?? 'auto');
+  if (!['auto','light','dark'].includes(mode)) return {valid:false,error:'主题模式仅支持 auto / light / dark。'};
+  const size = Number(values.pagerSize ?? 10);
+  if (!Number.isInteger(size) || size < 1 || size > 50) return {valid:false,error:'pagerSize 请输入 1–50 的整数。'};
+  const normalizedURL = base.href.endsWith('/') ? base.href : base.href + '/';
+  const content = ['# 合并到现有 hugo.toml 对应层级，不是完整配置', `baseURL = ${q(normalizedURL)}`, `title = ${q(values.title ?? 'paipai’s blog')}`, 'theme = "PaperMod"', '', '[pagination]', `pagerSize = ${size}`, '', '[params]', `defaultTheme = ${q(mode)}`, `ShowCodeCopyButtons = ${bool(values.codeCopy,true)}`, `ShowReadingTime = ${bool(values.readingTime,true)}`, `comments = ${bool(values.comments,true)}`, '', '[params.cover]', 'hidden = false', 'hiddenInList = true', 'hiddenInSingle = false'].join('\n');
+  return {valid:true,content,parameters:{baseURL:normalizedURL,title:String(values.title ?? 'paipai’s blog'),theme:'PaperMod',defaultTheme:mode,pagerSize:size,codeCopy:bool(values.codeCopy,true),readingTime:bool(values.readingTime,true),comments:bool(values.comments,true)}};
+}
+function revealTarget(id, updateHash = true) {
+  const target = document.getElementById(id);
+  if (!target) return false;
+  const panel = target.closest('.panel');
+  if (panel) activatePanel(panel.id);
+  let parent = target.parentElement;
+  while (parent) { if (parent.tagName === 'DETAILS') parent.open = true; parent = parent.parentElement; }
+  if (target.tagName === 'DETAILS') target.open = true;
+  document.querySelectorAll('.sidebar a').forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
+  if (updateHash) history.replaceState(null,'','#' + encodeURIComponent(id));
+  requestAnimationFrame(() => target.scrollIntoView({block:'start',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'}));
+  return true;
+}
+function activatePanel(id) {
+  document.querySelectorAll('.panel').forEach(panel => { panel.hidden = panel.id !== id; });
+  document.querySelectorAll('[data-tab]').forEach(button => { const active = button.dataset.tab === id; button.setAttribute('aria-selected',String(active)); button.tabIndex = active ? 0 : -1; });
+}
+window.BlogGuide = Object.freeze({generateArticle,generateConfig,revealTarget});
+if (!document.getElementById('article-form')) return;
+let toastTimer;
+function toast(message) { const box = document.getElementById('toast'); box.textContent = message; box.hidden = false; clearTimeout(toastTimer); toastTimer = setTimeout(() => { box.hidden = true; },2500); }
+async function copy(button) {
+  const target = document.getElementById(button.dataset.copy.replace(/^#/,''));
+  if (!target || !target.textContent.trim()) { toast('请先生成有效的内容。'); return; }
+  const text = target.textContent;
+  try {
+    if (navigator.clipboard && window.isSecureContext) await navigator.clipboard.writeText(text);
+    else {
+      const field = document.createElement('textarea'); field.value = text; field.style.position='fixed'; field.style.top='-1000px'; document.body.appendChild(field); field.focus(); field.select();
+      const copied = document.execCommand('copy'); field.remove();
+      if (!copied) throw new Error('copy failed');
+    }
+    const original = button.textContent; button.textContent='已复制'; toast('已复制到剪贴板。'); setTimeout(() => {button.textContent=original;},1600);
+  } catch { toast('浏览器未授予剪贴板权限，请选中文本手动复制。'); }
+}
+document.querySelectorAll('[data-copy]').forEach(button => button.addEventListener('click',() => copy(button)));
+document.querySelectorAll('a[href^="#"]').forEach(link => link.addEventListener('click',event => { event.preventDefault(); revealTarget(link.getAttribute('href').slice(1)); }));
+const tabButtons = Array.from(document.querySelectorAll('[data-tab]'));
+tabButtons.forEach((button,index) => {
+  button.addEventListener('click',() => { const panel=document.getElementById(button.dataset.tab); const first=panel.querySelector('[id]'); activatePanel(panel.id); if (first) revealTarget(first.id); });
+  button.addEventListener('keydown',event => { let next; if(event.key==='ArrowRight')next=(index+1)%tabButtons.length; if(event.key==='ArrowLeft')next=(index+tabButtons.length-1)%tabButtons.length; if(event.key==='Home')next=0; if(event.key==='End')next=tabButtons.length-1; if(next!==undefined){event.preventDefault();tabButtons[next].click();tabButtons[next].focus();} });
+});
+function hashNavigation() { if (!location.hash) return; let id; try{id=decodeURIComponent(location.hash.slice(1));}catch{return;} revealTarget(id,false); }
+window.addEventListener('hashchange',hashNavigation);
+function updateArticle() {
+  const result = generateArticle({title:document.getElementById('post-title').value,slug:document.getElementById('post-slug').value,date:document.getElementById('post-date').value,tags:document.getElementById('post-tags').value,categories:document.getElementById('post-categories').value,summary:document.getElementById('post-summary').value,cover:document.getElementById('post-cover').value,draft:document.getElementById('post-draft').checked,comments:document.getElementById('post-comments').checked,math:document.getElementById('post-math').checked});
+  const status = document.getElementById('form-status'); if(result.valid)status.classList.remove('error');else status.classList.add('error'); status.textContent=result.valid?`目标文件：${result.path} · 时区 +08:00 · ${document.getElementById('post-draft').checked?'草稿，正式构建不发布':'已关闭草稿，提交前请完成发布检查'}`:result.error;
+  document.getElementById('command-output').textContent=result.valid?result.command:''; document.getElementById('frontmatter-output').textContent=result.valid?result.content:'';
+  document.querySelectorAll('[data-copy="command-output"],[data-copy="frontmatter-output"]').forEach(button=>{button.disabled=!result.valid;});
+}
+try {document.getElementById('post-date').value = new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Shanghai',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).format(new Date()).replace(' ','T');}catch{}
+document.getElementById('article-form').addEventListener('submit',event=>{event.preventDefault();updateArticle();});
+document.getElementById('article-form').addEventListener('input',updateArticle);
+function updateConfig() {
+  const result=generateConfig({title:document.getElementById('config-title').value,baseURL:document.getElementById('config-baseurl').value,defaultTheme:document.getElementById('config-theme').value,pagerSize:document.getElementById('config-pager').value,codeCopy:document.getElementById('config-copy').checked,readingTime:document.getElementById('config-reading').checked,comments:document.getElementById('config-comments').checked});
+  document.getElementById('config-output').textContent=result.valid?result.content:''; const status=document.getElementById('config-status');if(result.valid)status.classList.remove('error');else status.classList.add('error');status.textContent=result.valid?'仅生成配置片段；修改文件后再测试与预览。':result.error; const copyButton=document.querySelector('[data-copy="config-output"]');if(copyButton)copyButton.disabled=!result.valid;
+}
+document.getElementById('config-form').addEventListener('input',updateConfig);document.getElementById('config-form').addEventListener('change',updateConfig);
+const checklist=Array.from(document.querySelectorAll('[data-check]'));const storageKey='paipai-blog-release-checklist-v1';
+try {const saved=JSON.parse(localStorage.getItem(storageKey)||'{}');checklist.forEach(input=>{input.checked=saved[input.dataset.check]===true;});}catch{}
+function updateChecklist() {const done=checklist.filter(input=>input.checked).length;document.getElementById('check-progress').value=done;document.getElementById('check-status').textContent=`${done} / ${checklist.length} 项完成${done===checklist.length?' · 请仍核对暂存差异后再提交':''}`;try{localStorage.setItem(storageKey,JSON.stringify(Object.fromEntries(checklist.map(input=>[input.dataset.check,input.checked]))));}catch{}}
+checklist.forEach(input=>input.addEventListener('change',updateChecklist));document.getElementById('reset-checklist').addEventListener('click',()=>{checklist.forEach(input=>{input.checked=false;});updateChecklist();});
+activatePanel('overview-panel'); updateArticle(); updateConfig(); updateChecklist(); hashNavigation();
+})();
+</script>
+</body>
+</html>
