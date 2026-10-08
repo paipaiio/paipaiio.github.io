@@ -5,13 +5,10 @@
     </span>
 </footer>
 
-{{/* 全站氛围层：流动暖色渐变网（Canvas）+ π 水印 + 浮尘（Canvas）+ 纸面颗粒，置于内容之下 */}}
+{{/* 全站氛围层：两团暖色光晕 + Canvas 浮尘，置于内容之下 */}}
 <div class="ambient-bg" aria-hidden="true">
-    <canvas id="ambient-mesh"></canvas>
-    <div class="ambient-mark">π</div>
+    <div class="ambient-orb orb-a"></div>
+    <div class="ambient-orb orb-b"></div>
     <canvas id="ambient-dust"></canvas>
-    <div class="ambient-grain"></div>
 </div>
-{{/* 走 Hugo 管道输出内容哈希文件名，避免 CDN/浏览器长期缓存旧版脚本 */}}
-{{- $ambient := resources.Get "js/ambient.js" | minify | fingerprint }}
-<script src="{{ $ambient.RelPermalink }}" defer></script>
+<script src="{{ "js/ambient.js" | relURL }}" defer></script>
