@@ -2,7 +2,7 @@
 title: "中学生投资学习系统"
 date: 2026-02-21T11:09:01+08:00
 draft: false
-tags: ["技术分析"]
+tags: ["技术分享"]
 mermaid: true
 ---
 

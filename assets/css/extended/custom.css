@@ -1,0 +1,475 @@
+/* ==========================================================
+   🎨 色彩系统：暖石色系（Light / Dark 双套）
+   在 PaperMod 变量层覆盖，全站自动生效
+========================================================== */
+
+:root {
+    --theme: rgb(250, 249, 245);          /* 暖白纸面 */
+    --entry: rgb(255, 255, 255);          /* 条目略高于纸面 */
+    --primary: rgb(25, 25, 25);           /* 近黑正文主色 */
+    --secondary: rgb(120, 113, 108);      /* 暖灰辅助文字 */
+    --tertiary: rgb(229, 228, 223);       /* 暖灰分隔/浅底 */
+    --content: rgb(41, 37, 36);           /* 正文内容色 */
+    --code-block-bg: rgb(28, 25, 23);     /* 暖黑代码块 */
+    --code-bg: rgb(240, 239, 235);        /* 行内代码浅暖底 */
+    --border: rgb(229, 228, 223);
+}
+
+:root[data-theme="dark"] {
+    --theme: rgb(20, 20, 19);
+    --entry: rgb(28, 27, 26);
+    --primary: rgb(250, 249, 245);
+    --secondary: rgb(168, 162, 158);
+    --tertiary: rgb(68, 64, 60);
+    --content: rgb(214, 211, 209);
+    --code-block-bg: rgb(28, 25, 23);
+    --code-bg: rgb(41, 37, 36);
+    --border: rgb(41, 37, 36);
+}
+
+/* 反色选中：黑白颠倒的克制高亮 */
+::selection {
+    background: var(--primary);
+    color: var(--theme);
+}
+
+/* 全局键盘焦点环：2px 偏移，清晰可见 */
+:focus-visible {
+    outline: 2px solid var(--secondary);
+    outline-offset: 2px;
+    border-radius: 2px;
+}
+
+/* ==========================================================
+   ✍️ 字体系统：衬线标题（中文宋体系）+ 流式字号
+   字号随视口在 600px → 2200px 之间线性插值
+========================================================== */
+
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.post-title,
+.post-content h1,
+.post-content h2,
+.post-content h3 {
+    font-family: "Source Han Serif SC", "Noto Serif CJK SC", "Noto Serif SC",
+        "Songti SC", "STSong", "SimSun", serif;
+    letter-spacing: 0.01em;
+}
+
+.post-title {
+    font-size: calc(28px + 8 * ((100vw - 600px) / 1600));
+    line-height: 1.25;
+    font-weight: 700;
+}
+
+.post-content {
+    max-width: 720px;
+    margin: auto;
+    font-size: calc(16px + 2 * ((100vw - 600px) / 1600));
+    line-height: 1.85;
+    letter-spacing: 0.01em;
+}
+
+.post-content h1,
+.post-content h2,
+.post-content h3 {
+    margin-top: 2.2em;
+    margin-bottom: 0.8em;
+    line-height: 1.4;
+    scroll-margin-top: calc(var(--header-height) + 16px);
+}
+
+.post-content h2 {
+    font-size: calc(22px + 4 * ((100vw - 600px) / 1600));
+}
+
+.post-content h3 {
+    font-size: calc(19px + 2 * ((100vw - 600px) / 1600));
+}
+
+/* 超出插值区间的固定上下限 */
+@media (max-width: 600px) {
+    .post-title { font-size: 28px; }
+    .post-content { font-size: 16px; padding: 0 0.5em; }
+    .post-content h2 { font-size: 22px; }
+    .post-content h3 { font-size: 19px; }
+}
+
+@media (min-width: 2200px) {
+    .post-title { font-size: 36px; }
+    .post-content { font-size: 18px; }
+    .post-content h2 { font-size: 26px; }
+    .post-content h3 { font-size: 21px; }
+}
+
+.post-content p {
+    margin: 1em 0;
+}
+
+.post-content ul,
+.post-content ol {
+    margin: 1em 0 1em 1.5em;
+}
+
+.post-content blockquote {
+    border-left: 4px solid var(--primary);
+    padding-left: 1em;
+    color: var(--secondary);
+    margin: 1.5em 0;
+}
+
+.post-content pre {
+    overflow-x: auto;
+    padding: 1em;
+    border-radius: 8px;
+}
+
+.post-content code {
+    padding: 0.15em 0.3em;
+    border-radius: 4px;
+}
+
+/* 行内代码：浅暖底 + 细边，与正文拉开层次 */
+.post-content :not(pre) > code {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+}
+
+.post-content img {
+    display: block;
+    margin: 1.5em auto;
+    max-width: 100%;
+}
+
+/* ==========================================================
+   🔗 正文链接：双层下划线扫入动效
+   底层暖灰常驻，悬停时主色下划线从左扫入、灰线向右退出
+========================================================== */
+
+.post-content a:not(:has(img)):not(.anchor) {
+    color: var(--primary);
+    text-decoration: none;
+    background-image:
+        linear-gradient(var(--secondary), var(--secondary)),
+        linear-gradient(var(--primary), var(--primary));
+    background-size: 100% 1px, 0 1px;
+    background-position: 100% 100%, 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.45s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.post-content a:not(:has(img)):not(.anchor):hover {
+    background-size: 0 1px, 100% 1px;
+}
+
+/* ==========================================================
+   🧭 顶部导航：发夹线 + 下划线生长动效
+========================================================== */
+
+.header {
+    box-shadow: inset 0 -1px 0 var(--border);
+}
+
+.logo a {
+    font-weight: 600;
+    letter-spacing: -0.01em;
+}
+
+#menu a {
+    text-decoration: none;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0 1.5px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    padding-bottom: 3px;
+    transition: background-size 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+#menu a:hover {
+    background-size: 100% 1.5px;
+}
+
+/* 当前页：去掉边框式下划线，与悬停动效保持同一语言 */
+#menu .active {
+    border-bottom: none;
+    background-size: 100% 1.5px;
+    font-weight: 600;
+}
+
+/* ==========================================================
+   🏷️ 元信息：等宽字体小标签，作为排版装饰而非配角
+========================================================== */
+
+.post-meta,
+.entry-footer {
+    font-family: "SF Mono", "JetBrains Mono", ui-monospace,
+        "Cascadia Mono", Consolas, monospace;
+    font-size: 12.5px;
+    letter-spacing: 0.04em;
+    color: var(--secondary);
+}
+
+/* ==========================================================
+   📰 列表页条目：统一 6px 圆角 + 悬停反馈
+========================================================== */
+
+.post-entry {
+    border-radius: 6px;
+    transition: border-color 150ms ease, box-shadow 150ms ease, transform 150ms ease;
+}
+
+.post-entry:hover {
+    border-color: var(--tertiary);
+}
+
+.post-entry .entry-header h2 {
+    font-family: "Source Han Serif SC", "Noto Serif CJK SC", "Noto Serif SC",
+        "Songti SC", "STSong", "SimSun", serif;
+    letter-spacing: 0.01em;
+}
+
+/* 有封面时使用明确的网格布局；
+   hiddenInList=true 不生成封面，不受这些规则影响。 */
+
+.post-entry:not(.tag-entry):has(> .entry-cover) {
+    display: grid;
+    grid-template-columns: 160px minmax(0, 1fr);
+    grid-template-areas:
+        "cover header"
+        "cover content"
+        "cover footer";
+    column-gap: 1.2rem;
+    align-items: start;
+}
+
+.post-entry:not(.tag-entry):has(> .entry-cover) > .entry-cover {
+    grid-area: cover;
+    margin-bottom: 0;
+}
+
+.post-entry:not(.tag-entry):has(> .entry-cover) > .entry-header {
+    grid-area: header;
+}
+
+.post-entry:not(.tag-entry):has(> .entry-cover) > .entry-content {
+    grid-area: content;
+    min-width: 0;
+}
+
+.post-entry:not(.tag-entry):has(> .entry-cover) > .entry-footer {
+    grid-area: footer;
+}
+
+.post-entry:not(.tag-entry) > .entry-cover img {
+    width: 160px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+@media (max-width: 768px) {
+    .post-entry:not(.tag-entry):has(> .entry-cover) {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-areas: "cover" "header" "content" "footer";
+        row-gap: 0.5rem;
+    }
+
+    .post-entry:not(.tag-entry) > .entry-cover img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+/* ===== GitHub 风格提示块；普通引用保留正文样式 ===== */
+
+.post-content blockquote.alert {
+    --alert-color: var(--primary);
+    border-left-color: var(--alert-color);
+    padding: 0.8em 1em;
+    background: rgba(125, 125, 125, 0.08);
+    border-radius: 6px;
+}
+
+.post-content .alert-heading {
+    color: var(--alert-color);
+    font-weight: 600;
+    margin: 0 0 0.5em;
+}
+
+.post-content blockquote.alert-note {
+    --alert-color: #3b82f6;
+}
+
+.post-content blockquote.alert-tip {
+    --alert-color: #10b981;
+}
+
+.post-content blockquote.alert-important {
+    --alert-color: #a855f7;
+}
+
+.post-content blockquote.alert-warning {
+    --alert-color: #f59e0b;
+}
+
+.post-content blockquote.alert-caution {
+    --alert-color: #ef4444;
+}
+
+/* ==========================================================
+   🏠 首页 Profile：留白 + 胶囊按钮微交互
+========================================================== */
+
+.profile {
+    padding-top: 3rem;
+    padding-bottom: 2rem;
+}
+
+.profile img {
+    border: 1px solid var(--tertiary);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.07);
+}
+
+.profile .profile_inner h1 {
+    font-family: "Source Han Serif SC", "Noto Serif CJK SC", "Noto Serif SC",
+        "Songti SC", "STSong", "SimSun", serif;
+    letter-spacing: -0.01em;
+}
+
+/* 描边式胶囊：透明底 + 暖灰细边框，悬停时边框转主色并微微上浮 */
+.profile .buttons .button {
+    background: transparent;
+    border: 1px solid rgba(120, 113, 108, 0.32);
+    border-radius: 999px;
+    transition: transform 150ms ease, border-color 150ms ease,
+        background-color 150ms ease, box-shadow 150ms ease;
+}
+
+.profile .buttons .button:hover {
+    background: transparent;
+    border-color: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="dark"] .profile .buttons .button {
+    border-color: rgba(168, 162, 158, 0.38);
+}
+
+.profile .buttons .button:active {
+    transform: scale(0.98);
+}
+
+[data-theme="dark"] .profile img {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .profile .buttons .button:hover {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+}
+
+/* ==========================================================
+   🌫️ 氛围背景层：流动渐变网（Canvas）+ 浮尘（Canvas）+ 纸面颗粒（噪点）
+   固定在视口最底层，不拦截任何交互
+========================================================== */
+
+.ambient-bg {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+/* 渐变网与浮尘：渐变网内部仅 1/10 分辨率渲染，放大到全屏产生柔焦 */
+#ambient-mesh,
+#ambient-dust {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* 点阵：细密圆点平铺，像坐标纸的格点 */
+.ambient-pattern {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(120, 113, 108, 0.55) 1px, transparent 1.3px);
+    background-size: 30px 30px;
+    opacity: 0.13;
+}
+
+[data-theme="dark"] .ambient-pattern {
+    background-image: radial-gradient(circle, rgba(214, 211, 209, 0.5) 1px, transparent 1.3px);
+    opacity: 0.09;
+}
+
+/* π 水印：右下角巨型衬线字符，与头像图形呼应，极低透明度只做肌理 */
+.ambient-mark {
+    position: absolute;
+    right: -7vmin;
+    bottom: -20vmin;
+    font-family: "Source Han Serif SC", "Noto Serif CJK SC", "Noto Serif SC",
+        "Songti SC", "STSong", Georgia, serif;
+    font-size: 64vmin;
+    line-height: 1;
+    color: var(--primary);
+    opacity: 0.032;
+    user-select: none;
+}
+
+[data-theme="dark"] .ambient-mark {
+    opacity: 0.055;
+}
+
+/* 纸面颗粒：feTurbulence 噪点平铺，像暖纸的细纹 */
+.ambient-grain {
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+    background-size: 180px 180px;
+    opacity: 0.05;
+    mix-blend-mode: multiply;
+}
+
+[data-theme="dark"] .ambient-grain {
+    opacity: 0.09;
+    mix-blend-mode: overlay;
+}
+
+/* 列表页底色让位给氛围层（PaperMod 默认会盖一层不透明底色） */
+.list,
+[data-theme="dark"] .list {
+    background: transparent;
+}
+
+/* ==========================================================
+   ⚓ 页脚版权栏：等宽小字 + 顶部发丝线
+========================================================== */
+
+.site-copyright {
+    box-shadow: inset 0 1px 0 var(--border);
+    font-family: "SF Mono", "JetBrains Mono", ui-monospace,
+        "Cascadia Mono", Consolas, monospace;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: var(--secondary);
+}
+
+/* ==========================================================
+   ♿ 减少动态偏好：关闭全部过渡、位移与背景动画
+========================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    .profile .buttons .button,
+    .post-entry,
+    #menu a,
+    .post-content a {
+        transition: none;
+    }
+
+    /* 氛围层由 ambient.js 处理：渐变网静态渲染一帧，浮尘直接关闭 */
+}

@@ -1,6 +1,5 @@
-+++
 ---
-title: "{{ replace .Name "-" " " | title }}"
+title: {{ replace .Name "-" " " | title | jsonify }}
 date: {{ .Date }}
 draft: true
 tags: []

@@ -57,39 +57,15 @@
     {{- end }}
   </footer>
 
-  {{- if (.Param "comments") }}
+  {{- if and (.Param "comments") (ne .Params.disableComments true) }}
   {{- partial "comments.html" . }}
+  {{- if eq .Type "posts" }}
+  {{- partial "giscus.html" . }}
+  {{- end }}
   {{- end }}
 </article>
-{{/* ===== GISCUS COMMENTS (CONFIG-DRIVEN) ===== */}}
-{{ if and (eq .Type "posts") (ne (default false .Params.disableComments) true) }}
 
-<script src="https://giscus.app/client.js" data-repo="{{ site.Params.giscus.repo }}"
-  data-repo-id="{{ site.Params.giscus.repoId }}" data-category="{{ site.Params.giscus.category }}"
-  data-category-id="{{ site.Params.giscus.categoryId }}" data-mapping="{{ site.Params.giscus.mapping }}"
-  data-strict="{{ site.Params.giscus.strict }}" data-reactions-enabled="{{ site.Params.giscus.reactionsEnabled }}"
-  data-emit-metadata="{{ site.Params.giscus.emitMetadata }}"
-  data-input-position="{{ site.Params.giscus.inputPosition }}" data-theme="{{ site.Params.giscus.theme }}"
-  data-lang="{{ site.Params.giscus.lang }}" crossorigin="anonymous" async>
-  </script>
-
-<script>
-  const setGiscusTheme = () => {
-    const theme = document.documentElement.classList.contains('dark')
-      ? 'transparent_dark'
-      : 'light';
-    const iframe = document.querySelector('iframe.giscus-frame');
-    if (iframe) {
-      iframe.contentWindow.postMessage(
-        { giscus: { setConfig: { theme } } },
-        'https://giscus.app'
-      );
-    }
-  };
-  window.addEventListener('message', setGiscusTheme);
-</script>
-
-{{ end }}
+{{- partial "math.html" . }}
 
 {{- if .Page.Store.Get "hasMermaid" }}
 {{ partial "mermaid.html" . }}
