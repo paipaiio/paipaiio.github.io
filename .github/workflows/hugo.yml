@@ -54,3 +54,17 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
+
+      - name: Purge Bitiful CDN cache
+        run: |
+          # 部署完成后刷新缤纷云全站缓存，避免新旧版本页面混跑
+          # 密钥存于仓库 Secret: BITIFUL_API_TOKEN（https://console.bitiful.com/apiToken）
+          response=$(curl -sS -w "\n%{http_code}" -X POST \
+            -H "Authorization: ${{ secrets.BITIFUL_API_TOKEN }}" \
+            -H "Content-Type: application/json" \
+            -d '{"type": "directory", "url_list": ["https://blog.paipaiio.com/"]}' \
+            https://api.bitiful.com/cdn/cache/refresh)
+          body=$(echo "$response" | head -n -1)
+          code=$(echo "$response" | tail -n 1)
+          echo "Bitiful purge response ($code): $body"
+          [ "$code" -ge 200 ] && [ "$code" -lt 300 ]
