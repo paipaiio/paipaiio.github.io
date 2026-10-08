@@ -18,9 +18,10 @@
 
     var meshCanvas = document.getElementById("ambient-mesh");
     var dustCanvas = document.getElementById("ambient-dust");
-    if (!meshCanvas || !dustCanvas) return;
+    if (!dustCanvas) return;
 
-    var mctx = meshCanvas.getContext("2d");
+    /* 渐变网画布为可选：标记不存在时跳过渐变网，仅保留浮尘 */
+    var mctx = meshCanvas ? meshCanvas.getContext("2d") : null;
     var dctx = dustCanvas.getContext("2d");
 
     /* 内部渲染分辨率比例：越小越柔、越省性能 */
@@ -61,6 +62,7 @@
     }, { passive: true });
 
     function drawMesh(now) {
+        if (!mctx) return;
         var t = now - t0;
         var dark = isDark();
         var alphaEnv = dark ? 0.38 : 1;   // 暗色下收敛，避免发闷
@@ -178,8 +180,10 @@
 
         mw = Math.max(1, Math.floor(vw * MESH_SCALE));
         mh = Math.max(1, Math.floor(vh * MESH_SCALE));
-        meshCanvas.width = mw;
-        meshCanvas.height = mh;
+        if (meshCanvas) {
+            meshCanvas.width = mw;
+            meshCanvas.height = mh;
+        }
 
         dustCanvas.width = Math.floor(vw * dpr);
         dustCanvas.height = Math.floor(vh * dpr);
