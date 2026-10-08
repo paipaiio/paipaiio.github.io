@@ -12,4 +12,6 @@
     <canvas id="ambient-dust"></canvas>
     <div class="ambient-grain"></div>
 </div>
-<script src="{{ "js/ambient.js" | relURL }}" defer></script>
+{{/* 走 Hugo 管道输出内容哈希文件名，避免 CDN/浏览器长期缓存旧版脚本 */}}
+{{- $ambient := resources.Get "js/ambient.js" | minify | fingerprint }}
+<script src="{{ $ambient.RelPermalink }}" defer></script>
