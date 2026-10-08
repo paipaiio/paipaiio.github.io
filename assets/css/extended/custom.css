@@ -440,7 +440,10 @@ body {
     mix-blend-mode: overlay;
 }
 
-/* 列表页底色让位给氛围层（PaperMod 默认会盖一层不透明底色） */
+/* 全站页面底色统一让位给氛围层。
+   PaperMod 的底色写在 body（reset.css）与暗色 .list（theme-vars.css）上，
+   只覆盖 .list 会让列表页和单页底色不一致 */
+body,
 .list,
 [data-theme="dark"] .list {
     background: transparent;
