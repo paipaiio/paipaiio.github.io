@@ -17,8 +17,6 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      BUILD_DIR: ${{ runner.temp }}/hugo-public
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -41,12 +39,12 @@ jobs:
         run: ./scripts/test.sh
 
       - name: Build
-        run: hugo --minify --destination "$BUILD_DIR" --cleanDestinationDir
+        run: hugo --minify --destination "$RUNNER_TEMP/hugo-public" --cleanDestinationDir
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ${{ env.BUILD_DIR }}
+          path: ${{ runner.temp }}/hugo-public
 
   deploy:
     needs: build
