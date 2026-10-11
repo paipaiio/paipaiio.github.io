@@ -1,13 +1,15 @@
 📖 最近在读：
-- 《社会契约论》
+- 《若干重大决策与事件的回顾》
 
 💻 最近在用:
 
-* Gemini + Gemini CLI
+* ~~Gemini + Gemini CLI~~~~垃圾
 * ChatGPT + Codex
-* Microsoft Copilot
+* ~~Microsoft Copilot~~垃圾
+* **Claude **版本答案！
 
 🧑‍💻 编辑器:
 
 * VSCode
 * Antigravity
+
