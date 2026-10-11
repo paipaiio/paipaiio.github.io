@@ -6,7 +6,7 @@
 * ~~Gemini + Gemini CLI~~~~垃圾
 * ChatGPT + Codex
 * ~~Microsoft Copilot~~垃圾
-* **Claude **版本答案！
+* **Claude**版本答案！
 
 🧑‍💻 编辑器:
 

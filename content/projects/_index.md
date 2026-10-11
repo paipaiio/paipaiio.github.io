@@ -13,3 +13,7 @@
    正常版本：Https://stock.paipaiio.com，完全人工操控大盘
 
    AI版本：https://aistock.paipaiio.com，完全AI操控大盘
+
+4. SSHChat 来聊天！
+
+   ssh.paipaiio.dev
