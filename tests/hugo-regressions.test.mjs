@@ -68,6 +68,10 @@ before(() => {
   fixture('regression-no-comments', 'math: false\ncomments: false');
   fixture('regression-disabled-comments', 'math: false\ndisableComments: true');
   fixture('regression-alerts', 'math: false', ['note', 'tip', 'warning', 'important', 'caution'].map(type => `> [!${type.toUpperCase()}]\n> ${type} 提示正文。`).join('\n\n') + '\n\n> 普通引用正文。');
+  fixture('regression-long-summary', 'math: false', Array.from({ length: 12 }, (_, i) => `第${i}段：这是一段很长的中文正文，用来确认自动摘要不会把整篇文章塞进描述。`).join('\n\n'));
+  mkdirSync(join(content, 'posts', 'regression-image'), { recursive: true });
+  cpSync(join(project, 'content', 'posts', 'api-relay', '2.1.1.png'), join(content, 'posts', 'regression-image', 'shot.png'));
+  writeFileSync(join(content, 'posts', 'regression-image', 'index.md'), '---\ntitle: "regression-image"\ndate: 2024-01-01T00:00:00+08:00\nslug: "regression-image"\n---\n\n![](shot.png)\n\n![终端截图](shot.png "标题")\n\n![外链](https://example.com/a.png)\n');
   initialBuild = build(destination);
 });
 
@@ -204,6 +208,129 @@ test('Sitemap home and archives lastmod follow the newest article', () => {
     assert.ok(entry?.lastmod, `${loc} must carry lastmod`);
     assert.ok(Date.parse(entry.lastmod) >= newest, `${loc} lastmod ${entry.lastmod} predates newest article`);
   }
+});
+
+function built(path) {
+  succeeded(initialBuild);
+  return readFileSync(join(destination, path), 'utf8');
+}
+
+function jsonLd(html) {
+  return [...html.matchAll(/<script type=["']?application\/ld\+json["']?>(.*?)<\/script>/gs)]
+    .flatMap(([, json]) => {
+      const data = JSON.parse(json);
+      return data['@graph'] || [data];
+    });
+}
+
+function meta(html, key) {
+  return html.match(new RegExp(`<meta (?:name|property)=["']?${key}["']? content=["']?([^"'>]*)`))?.[1];
+}
+
+test('Automatic CJK summaries keep descriptions short when front matter has none', () => {
+  const html = page('regression-long-summary');
+  for (const key of ['description', 'og:description', 'twitter:description']) {
+    const value = meta(html, key);
+    assert.ok(value && value.length <= 200, `${key} is ${value?.length} chars`);
+  }
+  const posting = jsonLd(html).find(item => item['@type'] === 'BlogPosting');
+  assert.ok(posting.description.length <= 200);
+});
+
+test('Every page has a share image, zh_CN locale and a non-empty card title', () => {
+  for (const path of ['index.html', 'about/index.html', 'posts/regression-standard/index.html']) {
+    const html = built(path);
+    assert.match(meta(html, 'og:image') || '', /^https:\/\/blog\.paipaiio\.com\/.+\.(?:png|jpe?g|webp)$/, path);
+    assert.equal(meta(html, 'og:locale'), 'zh_CN', path);
+    assert.ok(meta(html, 'twitter:title'), `${path} twitter:title`);
+  }
+  assert.equal(meta(built('index.html'), 'og:description'), config.params.description);
+  assert.equal(meta(built('index.html'), 'twitter:site'), '@paipaiio_dev');
+});
+
+test('Structured data describes the site, its author and the about page as entities', () => {
+  const site = config.baseurl.replace(/\/?$/, '/');
+  const home = jsonLd(built('index.html'));
+  const website = home.find(item => item['@type'] === 'WebSite');
+  const person = home.find(item => item['@type'] === 'Person');
+  assert.equal(website?.url, site);
+  assert.equal(person?.name, config.params.author);
+  assert.equal(person.url, `${site}about/`);
+  assert.ok(person.sameAs.length > 0);
+  assert.ok(person.sameAs.every(url => url.startsWith('https://')), 'sameAs must not contain mailto links');
+  assert.equal(website.publisher['@id'], person['@id']);
+
+  const posting = jsonLd(page('regression-standard')).find(item => item['@type'] === 'BlogPosting');
+  for (const role of ['author', 'publisher']) {
+    assert.equal(posting[role]['@type'], 'Person', role);
+    assert.equal(posting[role]['@id'], person['@id'], role);
+    assert.equal(posting[role].name, config.params.author, role);
+  }
+  assert.equal(posting.inLanguage, 'zh-CN');
+
+  const about = jsonLd(built('about/index.html'));
+  assert.ok(about.some(item => item['@type'] === 'ProfilePage' && item.mainEntity?.['@id'] === person['@id']));
+  assert.ok(!about.some(item => item['@type'] === 'BlogPosting'));
+});
+
+test('Markdown images get alt text, lazy loading and intrinsic dimensions', () => {
+  const images = page('regression-image').match(/<img\b[^>]*>/g) || [];
+  assert.equal(images.length, 3);
+  for (const image of images) {
+    assert.match(image, /\salt=["']?[^"'\s>]+/, image);
+    assert.match(image, /loading=["']?lazy/, image);
+  }
+  assert.match(images[0], /alt=["']?regression-image/);
+  assert.match(images[1], /alt=["']?终端截图/);
+  assert.match(images[1], /title=["']?标题/);
+  for (const image of images.slice(0, 2)) {
+    assert.match(image, /width=["']?738["']?/);
+    assert.match(image, /height=["']?486["']?/);
+  }
+});
+
+test('Published articles have no image without alt text', () => {
+  succeeded(initialBuild);
+  for (const slug of ['api-relay', 'stock-simulator', '帮助须知']) {
+    const html = readFileSync(join(destination, 'posts', slug, 'index.html'), 'utf8');
+    const start = html.search(/class=["']?post-content/);
+    assert.ok(start > 0, `${slug} must render post content`);
+    const content = html.slice(start, html.search(/class=["']?post-footer/));
+    const missing = (content.match(/<img\b[^>]*>/g) || []).filter(tag => !/\salt=["']?[^"'\s>]/.test(tag));
+    assert.deepEqual(missing, [], slug);
+  }
+});
+
+test('RSS carries full article content for readers and crawlers', () => {
+  const rss = built('index.xml');
+  assert.match(rss, /<content:encoded>/);
+  assert.match(rss, /xmlns:content=/);
+});
+
+test('llms.txt lists articles with links and descriptions', () => {
+  const llms = built('llms.txt');
+  assert.match(llms, new RegExp(`^# ${config.title}`));
+  assert.match(llms, new RegExp(`^> ${config.params.description}`, 'm'));
+  assert.match(llms, /^- \[regression-standard\]\(https:\/\/blog\.paipaiio\.com\/posts\/regression-standard\/\)/m);
+  assert.match(llms, /^- \[从实习到单干[^\]]*\]\([^)]+\): 运营 AI 中转站/m);
+  assert.doesNotMatch(llms, /regression-hidden-search|\/search\/|\/archives\//);
+});
+
+test('hugo new posts asks for an English slug and a summary', () => {
+  const archetype = readFileSync(join(project, 'archetypes', 'posts.md'), 'utf8');
+  assert.match(archetype, /^slug: ""/m);
+  assert.match(archetype, /^summary: ""/m);
+});
+
+test('Deploy notifies IndexNow with a key the site actually serves', () => {
+  const workflow = readFileSync(join(project, '.github', 'workflows', 'hugo.yml'), 'utf8');
+  const key = workflow.match(/INDEXNOW_KEY:\s*["']?([0-9a-f]{32})/)?.[1];
+  assert.ok(key, 'Workflow must declare INDEXNOW_KEY');
+  assert.equal(readFileSync(join(project, 'static', `${key}.txt`), 'utf8').trim(), key);
+  assert.equal(built(`${key}.txt`).trim(), key);
+  assert.match(workflow, /scripts\/indexnow\.mjs/);
+  const submit = workflow.slice(workflow.indexOf('api.indexnow.org') - 600, workflow.indexOf('api.indexnow.org'));
+  assert.match(submit, /continue-on-error:\s*true/, 'IndexNow failures must not fail the deploy');
 });
 
 test('hugo new creates valid draft frontmatter; buildDrafts renders it and production omits it', () => {

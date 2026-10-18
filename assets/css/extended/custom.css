@@ -146,6 +146,8 @@ body {
     display: block;
     margin: 1.5em auto;
     max-width: 100%;
+    /* 图片带 width/height 属性时按比例缩放，避免被拉伸 */
+    height: auto;
 }
 
 /* ==========================================================

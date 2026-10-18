@@ -32,7 +32,7 @@ cover:
 
 这一段实习从5月持续到8月，在这段时间里我也学会了很多客户维护的相关经验，以及例如文档撰写和开一个中转站会遇到的常见问题的解决办法。所以对于我来说进入中转站这个行业，并非一次完全没经历过的探索，而是一次拓展和尝试
 
-<img src="./1.1.jpg" alt="1" style="zoom:33%;" />
+<img src="./1.1.jpg" alt="实习期间与客户的 79 个共同群聊" style="zoom:33%;" />
 
 ### 1.2 开始这门生意的理由
 
@@ -66,7 +66,7 @@ cover:
 
 其实这个平台做的并非专业的api售卖，在我刚开始的时候他们也并不售卖api产品，而是类似共享订阅或者代订阅的服务。但是我在和他们的平台经理进行了一番讨论和沟通之后，他们决定在claude订阅的大类中添加api这个选项，而我作为推动这个品类的人，也自然成为了第一个吃螃蟹的人，第一批在这个平台售卖api的商家。
 
-前：<img src="./2.1.1.png" alt="1" style="zoom:33%;" />后：<img src="./2.1.2.png" style="zoom:33%;" />
+前：<img src="./2.1.1.png" alt="调整前：平台上已下架的 Claude API 额度商品" style="zoom:33%;" />后：<img src="./2.1.2.png" alt="调整后：重新上架的 Claude+GPT+Grok API 额度商品" style="zoom:33%;" />
 
 ### 2.2 我如何发货的
 
@@ -74,12 +74,12 @@ cover:
 
 为此，我专门给我的程序开发了一个批量创建用户和api密钥的功能，专门用来批量创建用户以及用户名下的api密钥，这样既避免了直接售卖api密钥无法准确定位到单个用户的麻烦，也省去了我手动创建用户和密钥的麻烦。
 
-<p align="center"><img src="./2.2.1.png" style="zoom:33%;" /></p>
+<p align="center"><img src="./2.2.1.png" alt="批量创建用户和 API 密钥" style="zoom:33%;" /></p>
 <p align="center"><small><em>批量创建用户和api密钥</em></small></p>
 
 有了这个二开的功能，我需要做的就非常的简单了。我将创建的用户和对应的密钥导出之后，下载这些信息，然后提取出里面的密钥，将他复制到平台批量补货的格式文件里面，然后再将这个格式文档上传到平台的自动发货系统。这样用户就可以在下单之后立刻收到完整的使用信息，无需人工操作或者人工审核。
 
-<p align="center"><img src="./2.2.2.png" style="zoom:33%;" /></p>
+<p align="center"><img src="./2.2.2.png" alt="平台的自动发货系统" style="zoom:33%;" /></p>
 <p align="center"><small><em>平台的自动发货系统</em></small></p>
 
 除了发货需要的api密钥之外，我会在备注当中补充说明使用我们服务所需要的baseurl请求地址，以及一些简短的使用指南和建议。并且在后期，我也逐渐加上了好评返利等促销活动的消息。例如：*base_url: https://api.example.com. Thank you for your purchase! You can check your API Key balance and transfer credits between Keys anytime on https://api.example.com. After completing a real-world test, submit a genuine review to receive an additional $10 in credit. Thanks for your support!*
@@ -92,7 +92,7 @@ cover:
 
 在后续的售卖当中，我们也依托平台的曝光以及我们自身积累的客户评价，在留住和优化老客户体验的同时，不断拓展客户。在整个7月当中，我的收入是 **2201.5美金**。
 
-<img src="./2.3.1.png" style="zoom:33%;" />
+<img src="./2.3.1.png" alt="平台后台的新订单入账记录" style="zoom:33%;" />
 
 此类直接在平台上进行售卖的方式，为我这种个人商家以及没有独立营销团队的小商家解决了早期获客的问题，但是问题也逐渐浮出水面，那就是对于平台的依赖，以及很多售后行为受制于平台规则，并且需要承担平台跑路的风险和提现手续费之类的隐性成本。
 
@@ -112,7 +112,7 @@ cover:
 
 我开发了批量创建用户的功能，我只需要设置创建用户的数量，他的默认分组，可见分组以及这个用户的额度，并且给这一批次打上标签，就可以直接进行创建。然后再下载包含信息的csv文件，并导入到平台的自动发货系统，这就完成了一次简单的补货，通过这一类的程序，大大的减轻了我的人工工作了，将原本重复的人工操作转换成批处理工作。
 
-<p align="center"><img src="./3.1.1.png" style="zoom:33%;" /></p>
+<p align="center"><img src="./3.1.1.png" alt="批量创建用户的功能" style="zoom:33%;" /></p>
 <p align="center"><small><em>批量创建用户的功能</em></small></p>
 
 ### 3.3 ex.2 余额迁移：解决重复购买的问题
@@ -121,7 +121,7 @@ cover:
 
 在一次用户的反馈当中，我马上也注意到了这个问题，于是我开发了这个余额迁移的功能，这样用户只需要提供新的key和目标key，就可以将他们新买的key的额度转移到他们正在用key当中。
 
-<p align="center"><img src="./3.3.1.png" style="zoom:33%;" /></p>
+<p align="center"><img src="./3.3.1.png" alt="余额迁移的功能" style="zoom:33%;" /></p>
 <p align="center"><small><em>余额迁移的功能</em></small></p>
 
 所以我觉得，在真实的开发当中，最重要的反而不是作出多炫酷的功能或者多完善的逻辑，而是找到可以真正解决用户痛点的功能，并且将它不断的简化和优化，提升用户体验。
@@ -171,10 +171,10 @@ cover:
 
 为了达成如上的效果，我购买了腾讯云的DNSPod服务，这是一种根据不同的请求ip设置不同解析地址的功能。
 
-<p align="center"><img src="./4.3.1.png" style="zoom:50%;" /></p>
+<p align="center"><img src="./4.3.1.png" alt="DNSPod 根据不同的请求 IP 设置不同解析地址" style="zoom:50%;" /></p>
 <p align="center"><small><em>根据不同的请求ip设置不同解析地址</em></small></p>
 
-<p align="center"><img src="./服务器网络拓扑与流量架构图.png" style="zoom:50%;" /></p>
+<p align="center"><img src="./服务器网络拓扑与流量架构图.png" alt="服务器网络拓扑与流量架构图" style="zoom:50%;" /></p>
 <p align="center"><small><em>服务器网络拓扑与流量架构图</em></small></p>
 
 ---

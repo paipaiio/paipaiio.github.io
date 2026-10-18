@@ -1,3 +1,8 @@
+---
+title: "paipai’s blog"
+description: "MuskZhou 的个人博客，记录技术、折腾与思考"
+---
+
 ## 这里你能看到什么
 
 - 🛠 技术与折腾记录（Hugo / 自建服务 / 工程实践）

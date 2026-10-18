@@ -30,23 +30,23 @@ cover:
 
 ​	1.点击ID旁边的三个点
 
-<img src="1.png" alt="helper_1" style="zoom:50%;" />
+<img src="1.png" alt="RustDesk：点击 ID 旁边的三个点" style="zoom:50%;" />
 
 ​	2.选择网络设置，然后选择解锁网络设置
 
-<img src="2.png" alt="help-2" style="zoom:50%;" />
+<img src="2.png" alt="RustDesk：选择网络设置并解锁网络设置" style="zoom:50%;" />
 
 3. 选择ID/中继服务器
 
-<img src="3.png" alt="3" style="zoom:50%;" />
+<img src="3.png" alt="RustDesk：选择 ID/中继服务器" style="zoom:50%;" />
 
 4. 复制我发你的一串字符，并且点击导入
 
-   <img src="4.png" style="zoom:50%;" />
+   <img src="4.png" alt="RustDesk：粘贴配置字符串并点击导入" style="zoom:50%;" />
 
 5. 回到主页，将ID和一次性密码发给我
 
-   <img src="5.png" style="zoom:50%;" />
+   <img src="5.png" alt="RustDesk 主页上的 ID 和一次性密码" style="zoom:50%;" />
 
 
 

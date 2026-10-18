@@ -1,0 +1,33 @@
+{{- /* 覆盖 PaperMod 的 llms.txt：按 llmstxt.org 格式输出站点简介、作者与带摘要的文章列表，新文章自动加入 */ -}}
+{{- define "llms_entry" -}}
+{{- $description := .Description | default .Summary | plainify | htmlUnescape | replaceRE `\s+` " " | strings.TrimSpace | truncate 160 -}}
+- [{{ .Title | plainify }}]({{ .Permalink }}){{ with $description }}: {{ . }}{{ end }}
+{{- end -}}
+# {{ site.Title }}
+
+> {{ site.Params.description | plainify }}
+
+作者：{{ site.Params.author }}{{ with site.GetPage "/about" }}（{{ .Permalink }}）{{ end }}
+语言：中文
+{{- with site.Params.schema.sameAs }}
+其他主页：{{ delimit . "、" }}
+{{- end }}
+{{- range site.Params.mainSections }}
+{{- with site.GetPage . }}
+
+## {{ .Title }}
+{{ range where .RegularPagesRecursive "Params.searchHidden" "ne" true }}
+{{ template "llms_entry" . }}
+{{- end }}
+{{- end }}
+{{- end }}
+
+## 页面
+{{ range where (where site.RegularPages "Section" "not in" site.Params.mainSections) "Layout" "not in" (slice "archives" "search") }}
+{{ template "llms_entry" . }}
+{{- end }}
+{{- range where site.Sections "Section" "not in" site.Params.mainSections }}
+{{- if and (not .Params.searchHidden) (not (in (slice "archives" "search") .Layout)) }}
+{{ template "llms_entry" . }}
+{{- end }}
+{{- end }}

@@ -2,6 +2,9 @@
 title: {{ replace .File.ContentBaseName "-" " " | title | jsonify }}
 date: {{ .Date }}
 draft: true
+# 英文短链接（如 api-relay），文章地址会是 /posts/<slug>/；留空则用文件夹名
+slug: ""
+# 一两句话的摘要，用于搜索结果、分享卡片和 llms.txt；留空则自动截取正文开头
 summary: ""
 tags: []
 categories: []

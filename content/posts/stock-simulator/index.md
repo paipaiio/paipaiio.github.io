@@ -15,7 +15,7 @@ mermaid: true
 
 为突破这一瓶颈，我们自主研发了下一代**全仿真模拟股市教学系统** 。该系统不仅仅是一个交易撮合引擎，更是通过深度集成大语言模型（DeepSeek API）构建的复杂自适应系统（Complex Adaptive System） 。它能够在零风险的环境下，完美映射真实金融市场的高阶动态特征。
 
-<img src="1.png" style="zoom:50%;" />
+<img src="1.png" alt="模拟炒股系统的股票市场页：市场指数、经济指标与个股行情" style="zoom:50%;" />
 
 
 

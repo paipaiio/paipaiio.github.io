@@ -1,0 +1,21 @@
+{{- /*
+  Markdown 图片渲染钩子（只作用于 ![说明](图片)，原始 <img> 标签不经过这里）：
+  - 没写说明时用文章标题兜底 alt
+  - 页面资源 / assets 图片补上 width、height，减少布局抖动（CLS）
+  - 统一懒加载与异步解码
+*/ -}}
+{{- $alt := .PlainText | default .Page.Title | plainify -}}
+{{- $src := .Destination | safeURL -}}
+{{- $image := "" -}}
+{{- $url := urls.Parse (strings.TrimSpace .Destination) -}}
+{{- if not $url.IsAbs -}}
+  {{- $path := strings.TrimPrefix "./" $url.Path -}}
+  {{- with or (.PageInner.Resources.Get $path) (resources.Get $path) -}}
+    {{- $image = . -}}
+    {{- $src = .RelPermalink -}}
+  {{- end -}}
+{{- end -}}
+<img src="{{ $src }}" alt="{{ $alt }}"
+  {{- with .Title }} title="{{ . }}"{{ end }}
+  {{- with $image }}{{ if in (slice "png" "jpeg" "gif" "webp" "bmp" "tiff") .MediaType.SubType }} width="{{ .Width }}" height="{{ .Height }}"{{ end }}{{ end }} loading="lazy" decoding="async">
+{{- /* 去掉钩子输出末尾换行 */ -}}

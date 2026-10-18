@@ -8,6 +8,8 @@ enableGitInfo = true
 buildDrafts = false
 buildFuture = false
 buildExpired = false
+# 中文按字计数：自动摘要、字数与阅读时间才准确（未写 summary 的文章也能得到短描述）
+hasCJKLanguage = true
 
 # 构建设置
 [pagination]
@@ -17,10 +19,21 @@ buildExpired = false
 # 输出格式（RSS / SEO）
 ########################
 [outputs]
-home = ["HTML", "RSS", "JSON"]
+home = ["HTML", "RSS", "JSON", "LLMS"]
 section = ["HTML"]
 taxonomy = ["HTML"]
 term = ["HTML"]
+
+# /llms.txt：给 AI 搜索与助手读的站点索引
+[outputFormats.LLMS]
+mediaType = "text/plain"
+baseName = "llms"
+isPlainText = true
+rel = "alternate"
+
+# 所有页面的 og:locale 使用 Open Graph 规定的 zh_CN 写法
+[cascade.params]
+locale = "zh_CN"
 
 ########################
 # PaperMod 参数
@@ -33,6 +46,12 @@ ShowLastMod = true
 
 env = "production"
 description = "MuskZhou 的个人博客，记录技术、折腾与思考"
+
+# 没有封面的页面用头像作为分享图
+images = ["img/avatar.png"]
+
+# RSS 输出全文，方便阅读器与 AI 抓取完整内容
+ShowFullTextinRSS = true
 
 enableSearch = true
 
@@ -61,6 +80,17 @@ ShowWordCount = false
 hideSummary = false
 UseHugoToc = true
 TocOpen = false
+
+# 结构化数据：站点作者是个人，sameAs 用于把各平台账号关联到同一个人
+[params.schema]
+publisherType = "Person"
+sameAs = [
+  "https://github.com/paipaiio",
+  "https://x.com/paipaiio_dev",
+]
+
+[params.social]
+twitter = "paipaiio_dev"
 
 [params.cover]
 hidden = false

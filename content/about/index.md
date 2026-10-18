@@ -4,6 +4,8 @@ draft = false
 title = 'about'
 
 searchHidden = true
+# 结构化数据把本页标记为作者主页（ProfilePage），而不是博客文章
+schemaType = 'ProfilePage'
 
 +++
 

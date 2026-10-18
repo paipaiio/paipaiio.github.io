@@ -34,6 +34,14 @@
   {{- partial "toc.html" . }}
   {{- end }}
 
+  {{- /* 原始 <img> 标签不经过图片渲染钩子，缺 alt 时在构建日志里提醒（不阻断构建） */}}
+  {{- $source := .RelPermalink }}
+  {{- with .File }}{{ $source = .Path }}{{ end }}
+  {{- range findRE `<img\b[^>]*>` .Content }}
+  {{- if not (findRE `\salt="[^"]+"` .) }}
+  {{- warnf "%s: 图片缺少 alt 描述，请补上 alt=\"...\"：%s" $source . }}
+  {{- end }}
+  {{- end }}
   {{- if .Content }}
   <div class="post-content">
     {{- if not (.Param "disableAnchoredHeadings") }}

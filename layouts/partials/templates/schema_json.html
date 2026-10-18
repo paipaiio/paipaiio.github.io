@@ -1,0 +1,148 @@
+{{- /*
+  覆盖 PaperMod 的结构化数据：
+  - 首页输出 WebSite + Person（作者实体），sameAs 只放公开主页链接
+  - 文章 BlogPosting 的 author/publisher 指向同一个 Person（@id），让搜索引擎与 AI 把文章归到作者名下
+  - schemaType = "ProfilePage" 的页面（about）输出 ProfilePage，而不是 BlogPosting
+  - BreadcrumbList 逻辑沿用主题原实现
+*/ -}}
+{{- $home := site.Home.Permalink }}
+{{- $personID := printf "%s#person" $home }}
+{{- $langParts := split site.LanguageCode "-" }}
+{{- $lang := site.LanguageCode }}
+{{- if eq (len $langParts) 2 }}
+  {{- $lang = printf "%s-%s" (index $langParts 0) (upper (index $langParts 1)) }}
+{{- end }}
+
+{{- $person := dict "@type" "Person" "@id" $personID "name" site.Params.author }}
+{{- with site.GetPage "/about" }}
+  {{- $person = merge $person (dict "url" .Permalink) }}
+{{- end }}
+{{- with site.Params.images }}
+  {{- $person = merge $person (dict "image" (index . 0 | absURL)) }}
+{{- end }}
+{{- with site.Params.schema.sameAs }}
+  {{- $person = merge $person (dict "sameAs" .) }}
+{{- end }}
+{{- $personRef := dict "@type" "Person" "@id" $personID "name" site.Params.author }}
+{{- with $person.url }}
+  {{- $personRef = merge $personRef (dict "url" .) }}
+{{- end }}
+
+{{- if .IsHome }}
+{{- $website := dict
+  "@type" "WebSite"
+  "@id" (printf "%s#website" $home)
+  "url" $home
+  "name" site.Title
+  "description" (site.Params.description | plainify)
+  "inLanguage" $lang
+  "publisher" (dict "@id" $personID)
+}}
+<script type="application/ld+json">
+{{ dict "@context" "https://schema.org" "@graph" (slice $website $person) | jsonify | safeJS }}
+</script>
+{{- else if (or .IsPage .IsSection) }}
+{{/* BreadcrumbList */}}
+{{- $url := replace .Parent.Permalink ( printf "%s" site.Home.Permalink) "" }}
+{{- $lang_url := strings.TrimPrefix ( printf "%s/" .Lang) $url }}
+{{- $bc_list := (split $lang_url "/")}}
+
+{{- $scratch := newScratch }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+  {{- range $index, $element := $bc_list }}
+
+    {{- $scratch.Add "path" (printf "%s/" $element ) | safeJS }}
+    {{- $bc_pg := site.GetPage ($scratch.Get "path") -}}
+
+    {{- if (and ($bc_pg) (gt (len . ) 0))}}
+    {{- if (and $index)}}, {{end }}
+    {
+      "@type": "ListItem",
+      "position": {{ add 1 $index  }},
+      "name": {{ $bc_pg.Name }},
+      "item": {{ $bc_pg.Permalink | safeHTML }}
+    }
+    {{- end }}
+
+  {{- end }}
+  {{- /*  self-page addition  */ -}}
+  {{- if (ge (len $bc_list) 2) }}, {{end }}
+    {
+      "@type": "ListItem",
+      "position": {{len $bc_list}},
+      "name": {{ .Name }},
+      "item": {{ .Permalink | safeHTML }}
+    }
+  ]
+}
+</script>
+{{- if .IsPage }}
+{{- $ISO8601 := "2006-01-02T15:04:05-07:00" }}
+{{- if eq .Params.schemaType "ProfilePage" }}
+{{- $profile := dict
+  "@type" "ProfilePage"
+  "@id" .Permalink
+  "url" .Permalink
+  "name" (.Title | plainify)
+  "inLanguage" $lang
+  "dateCreated" (.PublishDate.Format $ISO8601)
+  "dateModified" (.Lastmod.Format $ISO8601)
+  "mainEntity" $person
+}}
+<script type="application/ld+json">
+{{ merge (dict "@context" "https://schema.org") $profile | jsonify | safeJS }}
+</script>
+{{- else }}
+{{- $description := .Description | default .Summary | plainify | htmlUnescape | replaceRE `\s+` " " | strings.TrimSpace | truncate 160 }}
+{{- $keywords := .Params.keywords | default .Params.tags | default slice }}
+
+{{- /* 页面单独写了 author 且不是站点作者时，按名字输出，不挂到站点作者实体上 */ -}}
+{{- $author := $personRef }}
+{{- with .Params.author }}
+  {{- if reflect.IsSlice . }}
+    {{- $authors := slice }}
+    {{- range . }}
+      {{- $authors = $authors | append (cond (eq . site.Params.author) $personRef (dict "@type" "Person" "name" .)) }}
+    {{- end }}
+    {{- $author = $authors }}
+  {{- else if ne . site.Params.author }}
+    {{- $author = dict "@type" "Person" "name" . }}
+  {{- end }}
+{{- end }}
+
+{{- $posting := dict
+  "@context" "https://schema.org"
+  "@type" "BlogPosting"
+  "headline" (.Title | plainify)
+  "name" (.Title | plainify)
+  "description" $description
+  "keywords" $keywords
+  "articleBody" .Plain
+  "wordCount" .WordCount
+  "inLanguage" $lang
+  "url" .Permalink
+  "datePublished" (.PublishDate.Format $ISO8601)
+  "dateModified" (.Lastmod.Format $ISO8601)
+  "author" $author
+  "publisher" $personRef
+  "mainEntityOfPage" (dict "@type" "WebPage" "@id" .Permalink)
+}}
+{{- if .Params.cover.image }}
+  {{- $cover := cond (eq .Params.cover.relative true) (path.Join .RelPermalink .Params.cover.image) .Params.cover.image }}
+  {{- $posting = merge $posting (dict "image" ($cover | absURL)) }}
+{{- else }}
+  {{- with index (partial "templates/_funcs/get-page-images" .) 0 }}
+    {{- $posting = merge $posting (dict "image" .Permalink) }}
+  {{- end }}
+{{- end }}
+<script type="application/ld+json">
+{{ $posting | jsonify | safeJS }}
+</script>
+{{- end }}
+{{- end }}{{/* .IsPage end */}}
+
+{{- end -}}
