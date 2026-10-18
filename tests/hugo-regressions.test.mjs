@@ -177,6 +177,35 @@ test('Search JSON represents empty and missing taxonomies as arrays', () => {
   }
 });
 
+function sitemapEntries() {
+  succeeded(initialBuild);
+  const xml = readFileSync(join(destination, 'sitemap.xml'), 'utf8');
+  return [...xml.matchAll(/<url>(.*?)<\/url>/gs)].map(([, entry]) => ({
+    loc: entry.match(/<loc>(.*?)<\/loc>/)[1],
+    lastmod: entry.match(/<lastmod>(.*?)<\/lastmod>/)?.[1],
+  }));
+}
+
+test('Sitemap leaves out the search page and marks it noindex', () => {
+  const entries = sitemapEntries();
+  assert.ok(entries.some(entry => entry.loc.endsWith('/posts/regression-standard/')));
+  assert.ok(!entries.some(entry => entry.loc.endsWith('/search/')));
+  const search = readFileSync(join(destination, 'search', 'index.html'), 'utf8');
+  assert.match(search, /<meta name=["']?robots["']? content=["']?noindex, nofollow/);
+});
+
+test('Sitemap home and archives lastmod follow the newest article', () => {
+  const entries = sitemapEntries();
+  const newest = Math.max(...entries.filter(entry => entry.loc.includes('/posts/') && entry.lastmod)
+    .map(entry => Date.parse(entry.lastmod)));
+  const site = config.baseurl.replace(/\/?$/, '/');
+  for (const loc of [site, `${site}archives/`]) {
+    const entry = entries.find(item => item.loc === loc);
+    assert.ok(entry?.lastmod, `${loc} must carry lastmod`);
+    assert.ok(Date.parse(entry.lastmod) >= newest, `${loc} lastmod ${entry.lastmod} predates newest article`);
+  }
+});
+
 test('hugo new creates valid draft frontmatter; buildDrafts renders it and production omits it', () => {
   const created = hugo([
     'new', 'content', 'posts/regression-new-article.md',

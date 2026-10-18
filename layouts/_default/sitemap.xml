@@ -1,0 +1,19 @@
+{{- /* 覆盖 Hugo 内置 sitemap：首页与归档页的 lastmod 跟随最新文章，避免取到 _index.md 的旧提交时间 */ -}}
+{{- $newest := (index (site.RegularPages.ByLastmod.Reverse) 0).Lastmod -}}
+{{ printf "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>" | safeHTML }}
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  {{- range where .Pages "Sitemap.Disable" "ne" true }}
+  {{- if .Permalink }}
+  {{- $lastmod := .Lastmod }}
+  {{- if and (or .IsHome (eq .Layout "archives")) ($newest.After $lastmod) }}
+  {{- $lastmod = $newest }}
+  {{- end }}
+  <url>
+    <loc>{{ .Permalink }}</loc>
+    {{- if not $lastmod.IsZero }}
+    <lastmod>{{ safeHTML ($lastmod.Format "2006-01-02T15:04:05-07:00") }}</lastmod>
+    {{- end }}
+  </url>
+  {{- end }}
+  {{- end }}
+</urlset>
